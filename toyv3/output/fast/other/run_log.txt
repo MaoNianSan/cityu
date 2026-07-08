@@ -1,0 +1,13 @@
+2026-07-08 15:35:36,006 | INFO | Running preflight checks.
+2026-07-08 15:35:36,021 | INFO | Preflight checks passed.
+2026-07-08 15:35:36,021 | INFO | Starting mode=fast seed=0.
+2026-07-08 15:36:07,671 | INFO | mode=fast seed=0 completed=25/200
+2026-07-08 15:36:09,225 | INFO | mode=fast seed=0 completed=50/200
+2026-07-08 15:36:10,836 | INFO | mode=fast seed=0 completed=75/200
+2026-07-08 15:36:12,286 | INFO | mode=fast seed=0 completed=100/200
+2026-07-08 15:36:13,690 | INFO | mode=fast seed=0 completed=125/200
+2026-07-08 15:36:15,215 | INFO | mode=fast seed=0 completed=150/200
+2026-07-08 15:36:16,744 | INFO | mode=fast seed=0 completed=175/200
+2026-07-08 15:36:18,071 | INFO | mode=fast seed=0 completed=200/200
+2026-07-08 15:36:38,003 | INFO | Figures written to D:\research\PPI\code\20260706\toyv3\output\fast\figure.
+2026-07-08 15:36:38,003 | INFO | Completed mode=fast.

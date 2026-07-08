@@ -14,47 +14,39 @@ Cross-PPI is retained only as an interface in `cross_ppi.py` and is not run in t
 
 ### Data generation
 
-\[
+$$
 X=(1,X_1,X_2)^\top,
 \qquad X_1\sim\mathrm{Uniform}(-1,1),
 \qquad X_2\sim\mathrm{Bernoulli}(0.5).
-\]
+$$
 
 The common linear signal is
 
-\[
+$$
 \eta(X)=0.25+0.9X_1-0.6X_2.
-\]
+$$
 
-- **Mean estimation / LR:**
-  \[
+- Mean estimation / LR:
+
+  $$
   Y=\eta(X)+\epsilon,\qquad \epsilon\sim N(0,1).
-  \]
+  $$
 - **Logistic GLM:**
-  \[
+
+  $$
   Y\mid X\sim\mathrm{Bernoulli}\{\operatorname{expit}(\eta(X))\}.
-  \]
+  $$
 
 The default data sizes are `n=60` labelled observations and `N=600` unlabelled observations.
 
 ### Controlled proxy-output regimes
 
-For each scenario, let \(z(X)\) be the true conditional mean. The proxy output is
+For each scenario, let \(z(X)\) be the true conditional mean. The proxy output is  $f(X)=z(X)+e(X).$
 
-\[
-f(X)=z(X)+e(X).
-\]
-
-- `P1`: \(e=0.02U\), \(U\sim\mathrm{Uniform}(-1,1)\);
+- `P1`: \(e=0.02U\),   $ U \sim \mathrm{U}(-1,1)$
 - `P2`: \(e=0.06\);
-- `P3`: \(e=0.06(2X_2-1)\in\{-0.06,+0.06\}\);
+- `P3`: \(e=0.06 $ (2X_2-1) \in \{-0.06,0.06\} $ )
 - `P4`: \(e=0.20U\).
-
-`P1` and `P4` share the same generated `U` inside each replicate, differing only in amplitude. `P2` and `P3` have equal pointwise squared error:
-
-\[
-e_{P2}^2=e_{P3}^2=0.06^2.
-\]
 
 These are controlled pseudo learner outputs, not separately trained ML algorithms.
 
@@ -62,24 +54,24 @@ These are controlled pseudo learner outputs, not separately trained ML algorithm
 
 PPI++ selects one scalar \(\lambda\in[0,1]\) per replicate/scenario/profile by minimizing the trace of the plug-in sandwich covariance over the grid in `config.py`. This is a vector-level criterion: it does not guarantee a smaller interval for every individual coefficient in every replicate.
 
-\[
+$$
 \lambda=0\Rightarrow\text{Classic},
 \qquad
 \lambda=1\Rightarrow\text{PPI}.
-\]
+$$
 
 ## 2. File structure
 
 ```text
 config.py             # Numerical parameters, run modes, and worker count
 formulation.py         # Scenario definitions, targets, and outcome contracts
-data_generation.py     # Paired labelled/unlabelled data generation and input caching
+data_generation.py     # Paired labelled/unlabelled data generation and input caching, but the exact generation form depend on formulation.py
 learner_proxy.py       # P1--P4 controlled proxy outputs
 baselines.py           # Classic and Naive ML inference
-ppi.py                 # Standard PPI and shared weighted PPI-family solver
-ppiplusplus.py         # PPI++ lambda selection and fitting
-cross_ppi.py           # Reserved Cross-PPI interface (currently disabled)
-plotting.py            # All figure generation from aggregate tables
+ppi.py                 # Standard PPI
+ppiplusplus.py         # PPI++
+cross_ppi.py           # Cross-PPI
+plotting.py            # 
 main.py                # Simulation orchestration and output writing
 checks.py              # Mathematical and numerical preflight checks
 ipy/result_audit.ipynb # Read-only audit of fast/full outputs
@@ -135,11 +127,11 @@ output/
 
 Primary displayed metrics are:
 
-\[
+$$
 \text{Average CI Width}
 \qquad\text{and}\qquad
 \text{Empirical Coverage}.
-\]
+$$
 
 - `fast/table/metrics_seed0.csv`: seed-0 aggregate metrics;
 - `full/table/seed0_metrics.csv`: seed-0 primary metrics;

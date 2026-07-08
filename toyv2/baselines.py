@@ -1,4 +1,3 @@
-"""Classic and naive-ML inference baselines."""
 from __future__ import annotations
 
 from data_generation import SimulationData
@@ -14,7 +13,7 @@ def fit_classic(scenario: ScenarioSpec, data: SimulationData) -> EstimatorResult
         x=data.x_labeled,
         y=data.outcome_for(scenario),
         method="classic",
-    )
+    )  ## Naive statistic inference
 
 
 def fit_naive_ml(
@@ -28,4 +27,4 @@ def fit_naive_ml(
         x=data.x_unlabeled,
         y=prediction.f_unlabeled,
         method="naive_ml",
-    )
+    )  ## Only ML learner will be used for inference

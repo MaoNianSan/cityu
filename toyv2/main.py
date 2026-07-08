@@ -1,4 +1,3 @@
-"""Run the controlled PPI toy experiment and create all approved outputs."""
 from __future__ import annotations
 
 import argparse
@@ -27,7 +26,6 @@ from plotting import plot_all_results
 from ppi import fit_ppi
 from ppiplusplus import fit_ppi_plus_plus
 
-
 ROOT = Path(__file__).resolve().parent
 
 
@@ -38,7 +36,9 @@ class MetricAccumulator:
     storage: dict
 
     def __init__(self) -> None:
-        self.storage = defaultdict(lambda: {"count": 0, "sum_width": 0.0, "sum_coverage": 0.0})
+        self.storage = defaultdict(
+            lambda: {"count": 0, "sum_width": 0.0, "sum_coverage": 0.0}
+        )
 
     def add(self, key: tuple, width: float, covered: bool) -> None:
         bucket = self.storage[key]
@@ -73,9 +73,13 @@ class MetricAccumulator:
                     "empirical_coverage": values["sum_coverage"] / count,
                 }
             )
-        return pd.DataFrame(rows).sort_values(
-            ["seed", "scenario", "target", "confidence_level", "profile", "method"]
-        ).reset_index(drop=True)
+        return (
+            pd.DataFrame(rows)
+            .sort_values(
+                ["seed", "scenario", "target", "confidence_level", "profile", "method"]
+            )
+            .reset_index(drop=True)
+        )
 
 
 def _setup_logger(mode: str) -> logging.Logger:
@@ -87,7 +91,9 @@ def _setup_logger(mode: str) -> logging.Logger:
     formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
     stream = logging.StreamHandler(sys.stdout)
     stream.setFormatter(formatter)
-    file_handler = logging.FileHandler(other_dir / "run_log.txt", mode="w", encoding="utf-8")
+    file_handler = logging.FileHandler(
+        other_dir / "run_log.txt", mode="w", encoding="utf-8"
+    )
     file_handler.setFormatter(formatter)
     logger.addHandler(stream)
     logger.addHandler(file_handler)
@@ -164,7 +170,9 @@ def _diagnostic_row(
         "gradient_max_abs": diagnostics.get("gradient_max_abs"),
         "selected_covariance_trace": diagnostics.get("selected_covariance_trace"),
         "lambda_selection_mode": diagnostics.get("lambda_selection_mode"),
-        "lambda_candidate_traces": json.dumps(candidate_traces) if candidate_traces is not None else None,
+        "lambda_candidate_traces": (
+            json.dumps(candidate_traces) if candidate_traces is not None else None
+        ),
         "failure_reason": diagnostics.get("failure_reason"),
     }
 
@@ -181,7 +189,9 @@ def _record_result(
     result: EstimatorResult,
 ) -> None:
     if diagnostics is not None:
-        diagnostics.append(_diagnostic_row(seed, replicate_id, scenario, profile, method, result))
+        diagnostics.append(
+            _diagnostic_row(seed, replicate_id, scenario, profile, method, result)
+        )
 
     if not result.converged:
         message = (
@@ -196,12 +206,16 @@ def _record_result(
     estimates = np.asarray(result.estimate, dtype=float)
     covariance = np.asarray(result.covariance, dtype=float)
     if not (np.all(np.isfinite(estimates)) and np.all(np.isfinite(covariance))):
-        raise RuntimeError("A converged estimator returned non-finite estimates or covariance.")
+        raise RuntimeError(
+            "A converged estimator returned non-finite estimates or covariance."
+        )
 
     for index, target in enumerate(scenario.target_names):
         variance = float(covariance[index, index])
         if variance < -1e-12:
-            raise RuntimeError(f"Negative variance for {scenario.name}/{target}: {variance}.")
+            raise RuntimeError(
+                f"Negative variance for {scenario.name}/{target}: {variance}."
+            )
         standard_error = float(np.sqrt(max(variance, 0.0)))
         target_value = float(scenario.true_values[index])
         estimate = float(estimates[index])
@@ -265,14 +279,31 @@ def _evaluate_replicate(
 
     results: list[tuple[str, str, str, EstimatorResult]] = []
     for scenario in all_scenarios():
-        results.append((scenario.name, "baseline", "classic", fit_classic(scenario, data)))
+        results.append(
+            (scenario.name, "baseline", "classic", fit_classic(scenario, data))
+        )
         for profile in config.ACTIVE_PROFILES:
             prediction = generate_proxy(data, scenario, profile)
             results.extend(
                 [
-                    (scenario.name, profile, "naive_ml", fit_naive_ml(scenario, data, prediction)),
-                    (scenario.name, profile, "ppi", fit_ppi(scenario, data, prediction)),
-                    (scenario.name, profile, "ppi_plus_plus", fit_ppi_plus_plus(scenario, data, prediction)),
+                    (
+                        scenario.name,
+                        profile,
+                        "naive_ml",
+                        fit_naive_ml(scenario, data, prediction),
+                    ),
+                    (
+                        scenario.name,
+                        profile,
+                        "ppi",
+                        fit_ppi(scenario, data, prediction),
+                    ),
+                    (
+                        scenario.name,
+                        profile,
+                        "ppi_plus_plus",
+                        fit_ppi_plus_plus(scenario, data, prediction),
+                    ),
                 ]
             )
     return replicate_id, results, input_manifest_row
@@ -300,7 +331,9 @@ def _run_seed(
     if workers < 1:
         raise ValueError("config.WORKERS must be a positive integer.")
 
-    evaluations: list[tuple[int, list[tuple[str, str, str, EstimatorResult]], dict | None] | None] = [None] * n_replicates
+    evaluations: list[
+        tuple[int, list[tuple[str, str, str, EstimatorResult]], dict | None] | None
+    ] = [None] * n_replicates
     input_data_dir = paths["input_data"] if save_inputs else None
 
     if workers == 1:
@@ -311,8 +344,16 @@ def _run_seed(
                 save_input=save_inputs,
                 input_data_dir=input_data_dir,
             )
-            if (replicate_id + 1) % progress_every == 0 or replicate_id + 1 == n_replicates:
-                logger.info("mode=%s seed=%s replicate=%s/%s", mode, seed, replicate_id + 1, n_replicates)
+            if (
+                replicate_id + 1
+            ) % progress_every == 0 or replicate_id + 1 == n_replicates:
+                logger.info(
+                    "mode=%s seed=%s replicate=%s/%s",
+                    mode,
+                    seed,
+                    replicate_id + 1,
+                    n_replicates,
+                )
     else:
         completed = 0
         with ProcessPoolExecutor(max_workers=workers) as executor:
@@ -331,16 +372,26 @@ def _run_seed(
                 evaluations[replicate_id] = future.result()
                 completed += 1
                 if completed % progress_every == 0 or completed == n_replicates:
-                    logger.info("mode=%s seed=%s completed=%s/%s", mode, seed, completed, n_replicates)
+                    logger.info(
+                        "mode=%s seed=%s completed=%s/%s",
+                        mode,
+                        seed,
+                        completed,
+                        n_replicates,
+                    )
 
     # Aggregate in replicate-id order, preserving numerical and table-order
     # reproducibility between serial and parallel execution.
     for replicate_id, evaluation in enumerate(evaluations):
         if evaluation is None:
-            raise RuntimeError(f"Missing completed evaluation for replicate {replicate_id}.")
+            raise RuntimeError(
+                f"Missing completed evaluation for replicate {replicate_id}."
+            )
         returned_id, results, input_row = evaluation
         if returned_id != replicate_id:
-            raise RuntimeError("Replicate evaluation was returned with an inconsistent identifier.")
+            raise RuntimeError(
+                "Replicate evaluation was returned with an inconsistent identifier."
+            )
         if input_row is not None:
             file_path = Path(input_row["file_path"])
             input_manifest.append(
@@ -386,18 +437,30 @@ def _robustness_summary(all_metrics: pd.DataFrame) -> pd.DataFrame:
         average_ci_width_min_seed1_29=("average_ci_width", "min"),
         average_ci_width_max_seed1_29=("average_ci_width", "max"),
         empirical_coverage_median_seed1_29=("empirical_coverage", "median"),
-        empirical_coverage_q25_seed1_29=("empirical_coverage", lambda x: x.quantile(0.25)),
-        empirical_coverage_q75_seed1_29=("empirical_coverage", lambda x: x.quantile(0.75)),
+        empirical_coverage_q25_seed1_29=(
+            "empirical_coverage",
+            lambda x: x.quantile(0.25),
+        ),
+        empirical_coverage_q75_seed1_29=(
+            "empirical_coverage",
+            lambda x: x.quantile(0.75),
+        ),
         empirical_coverage_min_seed1_29=("empirical_coverage", "min"),
         empirical_coverage_max_seed1_29=("empirical_coverage", "max"),
     )
-    seed0_subset = seed0[key_columns + ["average_ci_width", "empirical_coverage"]].rename(
+    seed0_subset = seed0[
+        key_columns + ["average_ci_width", "empirical_coverage"]
+    ].rename(
         columns={
             "average_ci_width": "seed0_average_ci_width",
             "empirical_coverage": "seed0_empirical_coverage",
         }
     )
-    return seed0_subset.merge(summary, on=key_columns, how="left").sort_values(key_columns).reset_index(drop=True)
+    return (
+        seed0_subset.merge(summary, on=key_columns, how="left")
+        .sort_values(key_columns)
+        .reset_index(drop=True)
+    )
 
 
 def _write_json(path: Path, payload: dict) -> None:
@@ -405,7 +468,9 @@ def _write_json(path: Path, payload: dict) -> None:
         json.dump(payload, handle, ensure_ascii=False, indent=2)
 
 
-def _write_detail_table(frame: pd.DataFrame, parquet_path: Path, logger: logging.Logger) -> Path:
+def _write_detail_table(
+    frame: pd.DataFrame, parquet_path: Path, logger: logging.Logger
+) -> Path:
     """Write detailed audit records, falling back to compressed CSV if pyarrow is unavailable."""
     try:
         frame.to_parquet(parquet_path, index=False)
@@ -413,7 +478,11 @@ def _write_detail_table(frame: pd.DataFrame, parquet_path: Path, logger: logging
     except (ImportError, ModuleNotFoundError):
         fallback = parquet_path.with_suffix(".csv.gz")
         frame.to_csv(fallback, index=False, compression="gzip")
-        logger.warning("pyarrow is unavailable; wrote %s instead of %s.", fallback.name, parquet_path.name)
+        logger.warning(
+            "pyarrow is unavailable; wrote %s instead of %s.",
+            fallback.name,
+            parquet_path.name,
+        )
         return fallback
 
 
@@ -439,10 +508,16 @@ def _write_manifest(mode: str, run_config: dict, path: Path) -> None:
 
 
 def run(mode: str, skip_checks: bool = False, skip_plots: bool = False) -> None:
-    if isinstance(config.WORKERS, bool) or int(config.WORKERS) != config.WORKERS or int(config.WORKERS) < 1:
+    if (
+        isinstance(config.WORKERS, bool)
+        or int(config.WORKERS) != config.WORKERS
+        or int(config.WORKERS) < 1
+    ):
         raise ValueError("config.WORKERS must be a positive integer.")
     if config.CROSS_PPI_ENABLED:
-        raise RuntimeError("Cross-PPI is reserved but not implemented in the current preliminary experiment.")
+        raise RuntimeError(
+            "Cross-PPI is reserved but not implemented in the current preliminary experiment."
+        )
     run_config = config.get_run_config(mode)
     paths = _prepare_directories(mode)
     logger = _setup_logger(mode)
@@ -498,23 +573,49 @@ def run(mode: str, skip_checks: bool = False, skip_plots: bool = False) -> None:
             logger,
         )
     if all_input_manifest:
-        pd.DataFrame(all_input_manifest).to_csv(paths["input_root"] / "manifest.csv", index=False)
+        pd.DataFrame(all_input_manifest).to_csv(
+            paths["input_root"] / "manifest.csv", index=False
+        )
 
     if not skip_plots:
-        plot_all_results(seed0_metrics, paths["figure"], robustness_summary=robustness, all_metrics=metrics)
+        plot_all_results(
+            seed0_metrics,
+            paths["figure"],
+            robustness_summary=robustness,
+            all_metrics=metrics,
+        )
         logger.info("Figures written to %s.", paths["figure"])
 
     logger.info("Completed mode=%s.", mode)
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Run the controlled PPI toy experiment.")
-    parser.add_argument("--mode", choices=("fast", "full"), required=True, help="Execution mode from config.py.")
-    parser.add_argument("--skip-checks", action="store_true", help="Skip checks.py preflight assertions.")
-    parser.add_argument("--skip-plots", action="store_true", help="Skip figure generation after tables are written.")
+    parser = argparse.ArgumentParser(
+        description="Run the controlled PPI toy experiment."
+    )
+    parser.add_argument(
+        "--mode",
+        choices=("fast", "full"),
+        required=True,
+        help="Execution mode from config.py.",
+    )
+    parser.add_argument(
+        "--skip-checks",
+        action="store_true",
+        help="Skip checks.py preflight assertions.",
+    )
+    parser.add_argument(
+        "--skip-plots",
+        action="store_true",
+        help="Skip figure generation after tables are written.",
+    )
     return parser.parse_args()
 
 
 if __name__ == "__main__":
     arguments = parse_args()
-    run(mode=arguments.mode, skip_checks=arguments.skip_checks, skip_plots=arguments.skip_plots)
+    run(
+        mode=arguments.mode,
+        skip_checks=arguments.skip_checks,
+        skip_plots=arguments.skip_plots,
+    )

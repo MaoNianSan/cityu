@@ -1,4 +1,3 @@
-"""Mathematical formulations for mean estimation, linear regression, and logistic GLM."""
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -8,7 +7,6 @@ import numpy as np
 from scipy.special import expit
 
 import config
-
 
 Array = np.ndarray
 

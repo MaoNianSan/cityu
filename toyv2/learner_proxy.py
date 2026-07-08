@@ -1,4 +1,3 @@
-"""Controlled proxy-output regimes P1--P4 for the preliminary experiment."""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -8,7 +7,6 @@ import numpy as np
 import config
 from data_generation import SimulationData
 from formulation import ScenarioSpec
-
 
 Array = np.ndarray
 
@@ -26,14 +24,14 @@ class PredictionBundle:
 
 def _error(profile: str, x: Array, u: Array) -> Array:
     if profile == "P1":
-        return config.P1_NOISE_AMPLITUDE * u
+        return config.P1 * u
     if profile == "P2":
-        return np.full(x.shape[0], config.P2_CONSTANT_SHIFT, dtype=float)
+        return np.full(x.shape[0], config.P2, dtype=float)
     if profile == "P3":
         # x[:, 2] is X2 because x=(1, X1, X2)^T.
-        return config.P3_SIGNED_SHIFT * (2.0 * x[:, 2] - 1.0)
+        return config.P3 * (2.0 * x[:, 2] - 1.0)
     if profile == "P4":
-        return config.P4_NOISE_AMPLITUDE * u
+        return config.P4 * u
     raise ValueError(f"Unknown proxy profile {profile!r}.")
 
 
@@ -44,7 +42,9 @@ def generate_proxy(
 ) -> PredictionBundle:
     """Construct f=z+e under one controlled learner-quality profile."""
     if profile not in config.ACTIVE_PROFILES:
-        raise ValueError(f"Profile {profile!r} is not active in config.ACTIVE_PROFILES.")
+        raise ValueError(
+            f"Profile {profile!r} is not active in config.ACTIVE_PROFILES."
+        )
 
     z_labeled = scenario.conditional_mean(data.x_labeled)
     z_unlabeled = scenario.conditional_mean(data.x_unlabeled)

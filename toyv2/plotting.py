@@ -5,7 +5,7 @@ Figure contract
 1. Main figures: one 95% confidence-level figure per scenario.  The left panel
    reports empirical coverage for all methods; the right panel reports relative
    CI width only for methods that retain a valid-inference interpretation
-   (Classic, PPI, and PPI++).  Naive ML remains visible in the coverage panel
+   (Classic, PPI, and PPI++V2).  Naive ML remains visible in the coverage panel
    because its failure is part of the diagnostic, but it is excluded from the
    efficiency comparison because near-zero invalid intervals are not evidence
    of inferential efficiency.
@@ -25,6 +25,7 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 import pandas as pd
 
@@ -36,7 +37,13 @@ METHOD_LABELS = {
     "classic": "Classic",
     "naive_ml": "Naive ML",
     "ppi": "PPI",
-    "ppi_plus_plus": "PPI++",
+    "ppi_plus_plus": "PPI++V2",
+}
+METHOD_COLORS = {
+    "classic": "black",
+    "naive_ml": "tab:blue",
+    "ppi": "tab:orange",
+    "ppi_plus_plus": "tab:green",
 }
 PROFILE_LABELS = {
     "P1": "P1\nsmall random",
@@ -58,6 +65,82 @@ FOCUSED_HARD_YLIM = (0.75, 1.25)
 FOCUSED_Y_PADDING = 0.10
 FOCUSED_MIN_SPAN = 0.18
 FOCUSED_MARKER_PAD_FRAC = 0.025
+
+
+def _method_legend_handles(methods: tuple[str, ...] | list[str]) -> list[Line2D]:
+    handles: list[Line2D] = []
+
+    for method in methods:
+        if method == "classic":
+            handles.append(
+                Line2D(
+                    [0],
+                    [0],
+                    color=METHOD_COLORS[method],
+                    linestyle="--",
+                    linewidth=1.5,
+                    label=METHOD_LABELS[method],
+                )
+            )
+        else:
+            marker = CALIBRATION_MARKERS.get(method, "o")
+            if method == "naive_ml":
+                marker = "x"
+            handles.append(
+                Line2D(
+                    [0],
+                    [0],
+                    color=METHOD_COLORS[method],
+                    marker=marker,
+                    linestyle="None",
+                    markersize=6.5,
+                    label=METHOD_LABELS[method],
+                )
+            )
+
+    return handles
+
+
+def _calibration_legend_handles() -> list[Line2D]:
+    return [
+        Line2D([0], [0], color="0.35", linestyle=":", linewidth=1.1, label="Exact calibration"),
+        Line2D(
+            [0],
+            [0],
+            color=METHOD_COLORS["classic"],
+            marker=CALIBRATION_MARKERS["classic"],
+            linestyle="--",
+            markersize=5.6,
+            label=METHOD_LABELS["classic"],
+        ),
+        Line2D(
+            [0],
+            [0],
+            color=METHOD_COLORS["naive_ml"],
+            marker=CALIBRATION_MARKERS["naive_ml"],
+            linestyle="-",
+            markersize=5.6,
+            label=METHOD_LABELS["naive_ml"],
+        ),
+        Line2D(
+            [0],
+            [0],
+            color=METHOD_COLORS["ppi"],
+            marker=CALIBRATION_MARKERS["ppi"],
+            linestyle="-",
+            markersize=5.6,
+            label=METHOD_LABELS["ppi"],
+        ),
+        Line2D(
+            [0],
+            [0],
+            color=METHOD_COLORS["ppi_plus_plus"],
+            marker=CALIBRATION_MARKERS["ppi_plus_plus"],
+            linestyle="-",
+            markersize=5.6,
+            label=METHOD_LABELS["ppi_plus_plus"],
+        ),
+    ]
 
 
 def _single_row(frame: pd.DataFrame, **conditions: object) -> pd.Series:
@@ -148,24 +231,8 @@ def _coverage_reference_band(confidence_level: float, n_replicates: int) -> tupl
 
 
 def _summary_note(n_seeds: int, n_replicates: int) -> str:
-    focused_note = (
-        "Main panels use adaptive focused y-axes within [0.75, 1.25]: "
-        "limits are computed as valid min−0.1 and valid max+0.1; "
-        "boundary triangles mark values outside the displayed range."
-    )
-
-    if n_seeds == 1:
-        return (
-            f"Fast diagnostic: seed 0 only; R={n_replicates} replicates. "
-            f"{focused_note}"
-        )
-
-    return (
-        f"Full result: markers are medians across {n_seeds} outer seeds; "
-        f"thin colored whiskers show 2.5%–97.5% cross-seed robustness intervals; "
-        f"thick colored segments show IQRs; R={n_replicates} replicates per seed. "
-        f"{focused_note}"
-    )
+    del n_seeds, n_replicates
+    return "▲/▼ indicate values outside the displayed range."
 
 
 def _save_figure(fig: plt.Figure, output_dir: Path, stem: str) -> list[Path]:
@@ -334,6 +401,42 @@ def _draw_offscale_marker(
         )
 
 
+def _draw_offscale_interval_marker(
+    ax: plt.Axes,
+    x_value: float,
+    raw_q025: float,
+    raw_q975: float,
+    y_limits: tuple[float, float],
+    color: str,
+) -> None:
+    """Draw boundary triangles when a robustness interval exceeds the axis."""
+    y_low, y_high = y_limits
+
+    if np.isfinite(raw_q025) and raw_q025 < y_low:
+        ax.plot(
+            x_value,
+            _boundary_mark_y(y_limits, "low"),
+            marker="v",
+            linestyle="None",
+            color=color,
+            markersize=6.2,
+            alpha=0.95,
+            zorder=6,
+        )
+
+    if np.isfinite(raw_q975) and raw_q975 > y_high:
+        ax.plot(
+            x_value,
+            _boundary_mark_y(y_limits, "high"),
+            marker="^",
+            linestyle="None",
+            color=color,
+            markersize=6.2,
+            alpha=0.95,
+            zorder=6,
+        )
+
+
 def _draw_classic_seed_band(
     ax: plt.Axes,
     q025: float,
@@ -427,14 +530,14 @@ def _draw_main_coverage_panel(
             alpha=0.70,
             zorder=0,
         )
-    ax.axhline(confidence_level, color="0.35", linestyle=":", linewidth=1.2, label="Nominal")
+    ax.axhline(confidence_level, color="0.35", linestyle=":", linewidth=1.2, label="_nolegend_")
 
-    classic_line = ax.axhline(
+    ax.axhline(
         classic_center,
-        color="black",
+        color=METHOD_COLORS["classic"],
         linestyle="--",
         linewidth=1.5,
-        label="Classic",
+        label="_nolegend_",
     )
     classic_q025, classic_q25, classic_q75, classic_q975 = _clip_interval_for_axis(
         classic_q025,
@@ -449,12 +552,14 @@ def _draw_main_coverage_panel(
         classic_q25,
         classic_q75,
         classic_q975,
-        classic_line.get_color(),
+        METHOD_COLORS["classic"],
     )
 
     for method in ("naive_ml", "ppi", "ppi_plus_plus"):
         x_values: list[float] = []
         raw_y_values: list[float] = []
+        raw_q025_values: list[float] = []
+        raw_q975_values: list[float] = []
         y_values: list[float] = []
         q025_values: list[float] = []
         q25_values: list[float] = []
@@ -471,42 +576,64 @@ def _draw_main_coverage_panel(
                 confidence_level=confidence_level,
             )
             raw_center = float(row["center_empirical_coverage"])
+            raw_q025 = float(row["q025_empirical_coverage"])
+            raw_q25 = float(row["q25_empirical_coverage"])
+            raw_q75 = float(row["q75_empirical_coverage"])
+            raw_q975 = float(row["q975_empirical_coverage"])
+
             plotted_center, _ = _clip_value_for_axis(raw_center, y_limits)
+
             q025, q25, q75, q975 = _clip_interval_for_axis(
-                float(row["q025_empirical_coverage"]),
-                float(row["q25_empirical_coverage"]),
-                float(row["q75_empirical_coverage"]),
-                float(row["q975_empirical_coverage"]),
+                raw_q025,
+                raw_q25,
+                raw_q75,
+                raw_q975,
                 y_limits,
             )
 
             x_values.append(x_base[profile_index] + PROFILE_OFFSETS[method])
             raw_y_values.append(raw_center)
+            raw_q025_values.append(raw_q025)
+            raw_q975_values.append(raw_q975)
             y_values.append(plotted_center)
             q025_values.append(q025)
             q25_values.append(q25)
             q75_values.append(q75)
             q975_values.append(q975)
 
+        method_color = METHOD_COLORS[method]
         marker = "x" if method == "naive_ml" else "o"
-        line, = ax.plot(
+        ax.plot(
             x_values,
             y_values,
             marker=marker,
             linestyle="None",
             markersize=6.5,
             alpha=0.76 if method == "naive_ml" else 0.96,
-            label=METHOD_LABELS[method],
+            color=method_color,
+            label="_nolegend_",
             zorder=3,
         )
 
         for x_value, q025, q25, q75, q975 in zip(
             x_values, q025_values, q25_values, q75_values, q975_values
         ):
-            _draw_seed_interval(ax, x_value, q025, q25, q75, q975, line.get_color())
+            _draw_seed_interval(ax, x_value, q025, q25, q75, q975, method_color)
+
+        for x_value, raw_q025, raw_q975 in zip(
+            x_values, raw_q025_values, raw_q975_values
+        ):
+            _draw_offscale_interval_marker(
+                ax,
+                x_value,
+                raw_q025,
+                raw_q975,
+                y_limits,
+                method_color,
+            )
 
         for x_value, raw_y in zip(x_values, raw_y_values):
-            _draw_offscale_marker(ax, x_value, raw_y, y_limits, line.get_color())
+            _draw_offscale_marker(ax, x_value, raw_y, y_limits, method_color)
 
     ax.set_xticks(x_base)
     ax.set_xticklabels([PROFILE_LABELS[profile] for profile in profiles])
@@ -561,7 +688,7 @@ def _draw_main_efficiency_panel(
         reference_values=[1.0],
     )
 
-    ax.axhline(1.0, color="black", linestyle="--", linewidth=1.5, label="_nolegend_")
+    ax.axhline(1.0, color=METHOD_COLORS["classic"], linestyle="--", linewidth=1.5, label="_nolegend_")
     ax.text(
         0.98,
         1.0,
@@ -575,6 +702,8 @@ def _draw_main_efficiency_panel(
     for method in EFFICIENCY_METHODS:
         x_values: list[float] = []
         raw_y_values: list[float] = []
+        raw_q025_values: list[float] = []
+        raw_q975_values: list[float] = []
         y_values: list[float] = []
         q025_values: list[float] = []
         q25_values: list[float] = []
@@ -591,40 +720,65 @@ def _draw_main_efficiency_panel(
                 confidence_level=confidence_level,
             )
             raw_center = float(row["center_relative_ci_width"])
+            raw_q025 = float(row["q025_relative_ci_width"])
+            raw_q25 = float(row["q25_relative_ci_width"])
+            raw_q75 = float(row["q75_relative_ci_width"])
+            raw_q975 = float(row["q975_relative_ci_width"])
+
             plotted_center, _ = _clip_value_for_axis(raw_center, y_limits)
+
             q025, q25, q75, q975 = _clip_interval_for_axis(
-                float(row["q025_relative_ci_width"]),
-                float(row["q25_relative_ci_width"]),
-                float(row["q75_relative_ci_width"]),
-                float(row["q975_relative_ci_width"]),
+                raw_q025,
+                raw_q25,
+                raw_q75,
+                raw_q975,
                 y_limits,
             )
 
             x_values.append(x_base[profile_index] + PROFILE_OFFSETS[method])
             raw_y_values.append(raw_center)
+            raw_q025_values.append(raw_q025)
+            raw_q975_values.append(raw_q975)
             y_values.append(plotted_center)
             q025_values.append(q025)
             q25_values.append(q25)
             q75_values.append(q75)
             q975_values.append(q975)
 
-        line, = ax.plot(
+        method_color = METHOD_COLORS[method]
+
+        ax.plot(
             x_values,
             y_values,
             marker="o",
             linestyle="None",
             markersize=6.5,
-            label=METHOD_LABELS[method],
+            color=method_color,
+            label="_nolegend_",
             zorder=3,
         )
 
         for x_value, q025, q25, q75, q975 in zip(
             x_values, q025_values, q25_values, q75_values, q975_values
         ):
-            _draw_seed_interval(ax, x_value, q025, q25, q75, q975, line.get_color())
+            _draw_seed_interval(ax, x_value, q025, q25, q75, q975, method_color)
 
+        # Mark off-scale robustness intervals, even when the median point is inside.
+        for x_value, raw_q025, raw_q975 in zip(
+            x_values, raw_q025_values, raw_q975_values
+        ):
+            _draw_offscale_interval_marker(
+                ax,
+                x_value,
+                raw_q025,
+                raw_q975,
+                y_limits,
+                method_color,
+            )
+
+        # Mark off-scale median points.
         for x_value, raw_y in zip(x_values, raw_y_values):
-            _draw_offscale_marker(ax, x_value, raw_y, y_limits, line.get_color())
+            _draw_offscale_marker(ax, x_value, raw_y, y_limits, method_color)
 
     ax.set_xticks(x_base)
     ax.set_xticklabels([PROFILE_LABELS[profile] for profile in profiles])
@@ -664,13 +818,12 @@ def _plot_main_figure(
         coverage_ax.set_title(f"{target_title}: coverage")
         efficiency_ax.set_title(f"{target_title}: valid-method efficiency")
 
-    coverage_handles, coverage_labels = axes[0, 0].get_legend_handles_labels()
-    efficiency_handles, efficiency_labels = axes[0, 1].get_legend_handles_labels()
-    legend_map = dict(zip(coverage_labels + efficiency_labels, coverage_handles + efficiency_handles))
+    legend_methods = ("classic", "naive_ml", "ppi", "ppi_plus_plus")
+    legend_handles = _method_legend_handles(legend_methods)
     fig.legend(
-        legend_map.values(),
-        legend_map.keys(),
-        ncol=min(5, len(legend_map)),
+        handles=legend_handles,
+        labels=[handle.get_label() for handle in legend_handles],
+        ncol=len(legend_handles),
         loc="upper center",
         bbox_to_anchor=(0.5, 0.945),
         frameon=False,
@@ -679,13 +832,13 @@ def _plot_main_figure(
         0.5,
         0.035,
         "Grey band: 95% binomial Monte-Carlo reference range under exact calibration. "
-        "Naive ML is omitted from relative-width panels because invalid coverage is not efficiency.\n"
+        "Naive ML is omitted from relative-width panels because invalid coverage is not efficiency. "
         + summary_note,
         ha="center",
         va="bottom",
         fontsize=8.8,
     )
-    fig.tight_layout(rect=(0.0, 0.16, 1.0, 0.90))
+    fig.tight_layout(rect=(0.0, 0.10, 1.0, 0.90))
     return _save_figure(
         fig,
         output_dir,
@@ -706,7 +859,7 @@ def _draw_calibration_panel(
     The shared y-axis is deliberately focused on plausible calibration error.
     A near-zero-width Naive-ML interval can produce coverage error near -1;
     showing that value on the same linear scale would conceal whether PPI and
-    PPI++ are calibrated.  Such points are therefore marked with a downward
+    PPI++V2 are calibrated.  Such points are therefore marked with a downward
     triangle at the display boundary.  The exact, uncensored values are kept
     in ``table/plot_summary.csv`` and the primary coverage figures.
     """
@@ -723,7 +876,7 @@ def _draw_calibration_panel(
     )
 
     lower_limit, upper_limit = y_limits
-    ax.axhline(0.0, color="0.35", linestyle=":", linewidth=1.1, label="Exact calibration")
+    ax.axhline(0.0, color="0.35", linestyle=":", linewidth=1.1, label="_nolegend_")
 
     for method in COVERAGE_METHODS:
         centers: list[float] = []
@@ -763,18 +916,7 @@ def _draw_calibration_panel(
 
         style = "--" if method == "classic" else "-"
         alpha = 0.75 if method == "naive_ml" else 0.96
-
-        handle, = ax.plot(
-            [],
-            [],
-            marker=CALIBRATION_MARKERS[method],
-            linestyle=style,
-            linewidth=1.2,
-            markersize=5.6,
-            alpha=alpha,
-            label=METHOD_LABELS[method],
-        )
-        color = handle.get_color()
+        color = METHOD_COLORS[method]
 
         if within.any():
             ax.plot(
@@ -855,22 +997,24 @@ def _plot_calibration_figure(
     scenario_name: str,
     summary_note: str,
 ) -> list[Path]:
+    del summary_note
     scenario = get_scenario(scenario_name)
     profiles = list(config.ACTIVE_PROFILES)
     target_count = len(scenario.target_names)
     y_limits = tuple(float(value) for value in config.CALIBRATION_COVERAGE_ERROR_YLIM)
+    single_row = target_count == 1
     fig, axes = plt.subplots(
         target_count,
         len(profiles),
-        figsize=(3.25 * len(profiles), max(3.5, 2.85 * target_count)),
+        figsize=(15.0, 8.5) if not single_row else (14.0, 6.2),
         squeeze=False,
         sharex=True,
         sharey=True,
     )
     fig.suptitle(
         f"{display_name(scenario_name)}: coverage calibration across nominal confidence levels",
-        fontsize=14,
-        y=0.99,
+        fontsize=12,
+        y=0.985,
     )
 
     for row_index, target in enumerate(scenario.target_names):
@@ -885,28 +1029,31 @@ def _plot_calibration_figure(
             if row_index == target_count - 1:
                 ax.set_xlabel("Nominal confidence")
 
-    handles, labels = axes[0, 0].get_legend_handles_labels()
-    legend_map = dict(zip(labels, handles))
+    legend_handles = _calibration_legend_handles()
     fig.legend(
-        legend_map.values(),
-        legend_map.keys(),
-        ncol=min(5, len(legend_map)),
+        handles=legend_handles,
+        labels=[handle.get_label() for handle in legend_handles],
+        ncol=min(5, len(legend_handles)),
         loc="upper center",
-        bbox_to_anchor=(0.5, 0.94),
+        bbox_to_anchor=(0.5, 0.90 if single_row else 0.94),
         frameon=False,
     )
     fig.text(
         0.5,
-        0.028,
-        "Zero denotes exact calibration. Grey vertical bars are 95% binomial Monte-Carlo reference ranges. "
-        "Downward/upward triangles indicate coverage error outside the displayed range.\n"
-        "P2 and P3 have matched pointwise proxy MSE but different error structure. "
-        + summary_note,
+        0.045 if single_row else 0.025,
+        "Coverage error = empirical coverage - nominal. ▲/▼ indicate values outside the displayed range.",
         ha="center",
         va="bottom",
-        fontsize=8.6,
+        fontsize=8,
     )
-    fig.tight_layout(rect=(0.0, 0.08, 1.0, 0.89))
+    fig.subplots_adjust(
+        left=0.07,
+        right=0.98,
+        top=0.76 if single_row else 0.88,
+        bottom=0.20 if single_row else 0.13,
+        wspace=0.18,
+        hspace=0.22,
+    )
     return _save_figure(fig, output_dir, f"{scenario_name}_calibration")
 
 

@@ -1,4 +1,4 @@
-# toy
+# toyv2
 
 Controlled preliminary simulation package for Prediction-Powered Inference (PPI).
 
@@ -27,12 +27,12 @@ $$
 $$
 
 - Mean estimation / LR:
-
+  
   $$
   Y=\eta(X)+\epsilon,\qquad \epsilon\sim N(0,1).
   $$
 - **Logistic GLM:**
-
+  
   $$
   Y\mid X\sim\mathrm{Bernoulli}\{\operatorname{expit}(\eta(X))\}.
   $$
@@ -45,14 +45,299 @@ For each scenario, let \(z(X)\) be the true conditional mean. The proxy output i
 
 - `P1`: \(e=0.02U\),   $ U \sim \mathrm{U}(-1,1)$
 - `P2`: \(e=0.06\);
-- `P3`: \(e=0.06 $ (2X_2-1) \in \{-0.06,0.06\} $ )
+- `P3`: \(e=0.06 $ (2X_2-1) \in \{-0.06,0.06\} $ ) This form can create +/- e value equally.
 - `P4`: \(e=0.20U\).
+
+## 2. PPI Methods
 
 These are controlled pseudo learner outputs, not separately trained ML algorithms.
 
-### PPI++
+For this part, we use the parameter name uesed in the code
 
-PPI++ selects one scalar \(\lambda\in[0,1]\) per replicate/scenario/profile by minimizing the trace of the plug-in sandwich covariance over the grid in `config.py`. This is a vector-level criterion: it does not guarantee a smaller interval for every individual coefficient in every replicate.
+For each scenario, the labelled and unlabelled covariates are
+
+$$
+x_{\mathrm{labeled}}=\texttt{data.x\_labeled},
+\qquad
+x_{\mathrm{unlabeled}}=\texttt{data.x\_unlabeled}.
+$$
+
+The labelled outcome is
+
+$$
+y_{\mathrm{labeled}}=\texttt{data.outcome\_for(scenario)}.
+$$
+
+The controlled proxy outputs are
+
+$$
+f_{\mathrm{labeled}}=\texttt{prediction.f\_labeled},
+\qquad
+f_{\mathrm{unlabeled}}=\texttt{prediction.f\_unlabeled}.
+$$
+
+The labelled and unlabelled sample sizes are
+
+$$
+n=\texttt{x\_labeled.shape[0]},
+\qquad
+N=\texttt{x\_unlabeled.shape[0]}.
+$$
+
+### PPI
+
+PPI uses prediction outputs on the large unlabelled sample and corrects the prediction bias using the labelled sample.
+
+For mean estimation, the PPI estimator is
+
+$$
+\widehat\theta_{\mathrm{PPI}}
+=
+\frac{1}{n}\sum_{i=1}^{n} y_{\mathrm{labeled},i}
++
+\left(
+\frac{1}{N}\sum_{j=1}^{N} f_{\mathrm{unlabeled},j}
+-
+\frac{1}{n}\sum_{i=1}^{n} f_{\mathrm{labeled},i}
+\right).
+$$
+
+The corresponding variance estimator is
+
+$$
+\widehat{\operatorname{Var}}
+(\widehat\theta_{\mathrm{PPI}})
+=
+\frac{
+\widehat{\operatorname{Var}}
+(y_{\mathrm{labeled}}-f_{\mathrm{labeled}})
+}{n}
++
+\frac{
+\widehat{\operatorname{Var}}
+(f_{\mathrm{unlabeled}})
+}{N}.
+$$
+
+
+For linear regression and logistic GLM, the same idea is applied at the estimating-equation level.
+
+For linear regression, PPI solves
+
+$$
+0
+=
+\frac{1}{N}
+x_{\mathrm{unlabeled}}^\top
+\left(
+x_{\mathrm{unlabeled}}\beta
+-
+f_{\mathrm{unlabeled}}
+\right)
++
+\frac{1}{n}
+x_{\mathrm{labeled}}^\top
+\left(
+f_{\mathrm{labeled}}
+-
+y_{\mathrm{labeled}}
+\right).
+$$
+
+For logistic GLM, with
+
+$$
+\mu_\beta(x)=\operatorname{expit}(x^\top\beta),
+$$
+
+PPI solves
+
+$$
+0
+=
+\frac{1}{N}
+x_{\mathrm{unlabeled}}^\top
+\left(
+\mu_\beta(x_{\mathrm{unlabeled}})
+-
+f_{\mathrm{unlabeled}}
+\right)
++
+\frac{1}{n}
+x_{\mathrm{labeled}}^\top
+\left(
+f_{\mathrm{labeled}}
+-
+y_{\mathrm{labeled}}
+\right).
+$$
+
+### PPI++V2
+
+The toyv2 implementation of PPI++ is a variance-minimizing weighted PPI variant.
+It evaluates a family of estimators indexed by
+
+$$
+\texttt{lambda\_}\in[0,1].
+$$
+
+The two boundary cases are
+
+$$
+\texttt{lambda\_}=0
+\Rightarrow
+\text{Classic},
+\qquad
+\texttt{lambda\_}=1
+\Rightarrow
+\text{PPI}.
+$$
+
+For mean estimation, the weighted estimator is
+
+$$
+\widehat\theta_{\lambda}
+=
+\frac{1}{n}\sum_{i=1}^{n} y_{\mathrm{labeled},i}
++
+\lambda
+\left(
+\frac{1}{N}\sum_{j=1}^{N} f_{\mathrm{unlabeled},j}
+-
+\frac{1}{n}\sum_{i=1}^{n} f_{\mathrm{labeled},i}
+\right).
+$$
+
+The corresponding variance estimator is
+
+$$
+\widehat{\operatorname{Var}}
+(\widehat\theta_{\lambda})
+=
+\frac{
+\widehat{\operatorname{Var}}
+(y_{\mathrm{labeled}}-\lambda f_{\mathrm{labeled}})
+}{n}
++
+\lambda^2
+\frac{
+\widehat{\operatorname{Var}}
+(f_{\mathrm{unlabeled}})
+}{N}.
+$$
+
+For linear regression, the weighted estimating equation is
+
+$$
+0
+=
+\frac{1}{n}
+x_{\mathrm{labeled}}^\top
+\left[
+(1-\lambda)x_{\mathrm{labeled}}\beta
+-
+y_{\mathrm{labeled}}
++
+\lambda f_{\mathrm{labeled}}
+\right]
++
+\frac{\lambda}{N}
+x_{\mathrm{unlabeled}}^\top
+\left(
+x_{\mathrm{unlabeled}}\beta
+-
+f_{\mathrm{unlabeled}}
+\right).
+$$
+
+Equivalently, the code constructs
+
+$$
+\texttt{hessian}
+=
+(1-\lambda)
+\frac{x_{\mathrm{labeled}}^\top x_{\mathrm{labeled}}}{n}
++
+\lambda
+\frac{x_{\mathrm{unlabeled}}^\top x_{\mathrm{unlabeled}}}{N},
+$$
+
+and
+
+$$
+\texttt{rhs}
+=
+\frac{
+x_{\mathrm{labeled}}^\top
+(y_{\mathrm{labeled}}-\lambda f_{\mathrm{labeled}})
+}{n}
++
+\lambda
+\frac{
+x_{\mathrm{unlabeled}}^\top f_{\mathrm{unlabeled}}
+}{N}.
+$$
+
+The estimate is obtained by solving
+
+$$
+\widehat\beta_{\lambda}
+=
+\texttt{hessian}^{-1}
+\texttt{rhs}.
+$$
+
+For logistic GLM, the weighted estimating equation is
+
+$$
+0
+=
+\frac{1}{n}
+x_{\mathrm{labeled}}^\top
+\left[
+(1-\lambda)\mu_\beta(x_{\mathrm{labeled}})
+-
+y_{\mathrm{labeled}}
++
+\lambda f_{\mathrm{labeled}}
+\right]
++
+\frac{\lambda}{N}
+x_{\mathrm{unlabeled}}^\top
+\left[
+\mu_\beta(x_{\mathrm{unlabeled}})
+-
+f_{\mathrm{unlabeled}}
+\right].
+$$
+
+For each candidate `lambda_`, the code computes a sandwich covariance matrix,
+
+$$
+\texttt{covariance}
+=
+\texttt{hessian}^{-1}
+\texttt{omega}
+\texttt{hessian}^{-T},
+$$
+
+where `omega` is formed from `psi_labeled` and `psi_unlabeled`.
+
+PPI++V2 selects the value of `lambda_` that minimizes the trace of this covariance matrix over the grid specified by `PPI_PLUS_PLUS_LAMBDA_GRID` in `config.py`:
+
+$$
+\widehat{\lambda}
+=
+\arg\min_{\lambda\in\texttt{PPI\_PLUS\_PLUS\_LAMBDA\_GRID}}
+\operatorname{tr}
+\left(
+\texttt{covariance}_{\lambda}
+\right).
+$$
+
+This is a vector-level variance criterion. It can reduce the overall sandwich covariance trace, but it does not guarantee a shorter confidence interval for every individual coefficient in every replicate.
+
+This implementation is not the paper-based standard PPI++ covariance-to-variance-ratio rule. It is retained as a separate variance-minimizing variant and is therefore referred to as **PPI++V2**.
 
 $$
 \lambda=0\Rightarrow\text{Classic},
@@ -60,7 +345,7 @@ $$
 \lambda=1\Rightarrow\text{PPI}.
 $$
 
-## 2. File structure
+## 3. File structure
 
 ```text
 config.py             # Numerical parameters, run modes, and worker count
@@ -78,7 +363,7 @@ ipy/result_audit.ipynb # Read-only audit of fast/full outputs
 tests/test_core.py      # Lightweight regression tests for core numerical guards
 ```
 
-## 3. Installation
+## 4. Installation
 
 ```bash
 python -m venv .venv
@@ -87,7 +372,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-## 4. Run modes
+## 5. Run modes
 
 ```bash
 python main.py --mode fast
@@ -111,7 +396,7 @@ python main.py --mode fast --skip-plots
 python main.py --mode fast --skip-checks
 ```
 
-## 5. Outputs
+## 6. Outputs
 
 ```text
 output/
@@ -151,7 +436,7 @@ Each scenario produces two figure types:
 
 The grey reference regions/bars are 95% binomial Monte-Carlo ranges under exact calibration. Fast-mode figures show seed 0 with `R=200`. Full-mode figures show the median across all outer seeds, with vertical IQR bars computed from that same seed population. `plot_summary.csv` records the exact aggregate quantities used for plotting, including uncensored coverage error and relative CI width.
 
-## 6. Integrity checks
+## 7. Integrity checks
 
 `checks.py` runs before `main.py` by default. It verifies, among other conditions:
 
@@ -163,6 +448,7 @@ The grey reference regions/bars are 95% binomial Monte-Carlo ranges under exact 
 - `lambda=1` exactly recovers PPI;
 - boundary coverage is stable when an analytically exact interval has only floating-point-scale width.
 
-## 7. Notebook scope
+## 8. Notebook scope
 
 `ipy/result_audit.ipynb` only reads existing `output/fast/` and `output/full/` files. It does not generate data, refit estimators, or overwrite formal output.
+

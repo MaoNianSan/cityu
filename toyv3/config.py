@@ -3,7 +3,8 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any
 
-PROJECT_NAME = "toy"
+PROJECT_NAME = "toyv3"
+INPUT_SCHEMA_VERSION = 2
 ACTIVE_SCENARIOS = ("mean", "lr", "logistic_glm")
 ACTIVE_METHODS = (
     "classic",
@@ -26,10 +27,10 @@ TRUE_BETA = (0.25, 0.90, -0.60)  # the masked parameter with X:[1,X_1,X_2]
 GAUSSIAN_NOISE_SD = 1.0  # variance of epsilon, indicate the standard noise
 
 
-P1 = 0.02  # the noise-level of the 4 learners, P1 is the baseline
+P1 = 0.02  # standard-normal proxy-error scale; P1 is the baseline
 P2 = 0.06  # overall lager than the baseline
 P3 = 0.06  # uncertain direction
-P4 = 0.20  # control the noise level rather than direction
+P4 = 0.20  # standard-normal proxy-error scale; shares P1's realization
 
 
 CONFIDENCE_LEVELS = (0.90, 0.95, 0.975)

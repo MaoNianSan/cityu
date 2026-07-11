@@ -1,12 +1,12 @@
 {
-  "project": "toy",
+  "project": "toyv3",
   "mode": "full",
-  "timestamp_utc": "2026-07-08T07:36:41.386354+00:00",
+  "timestamp_utc": "2026-07-11T02:06:52.766019+00:00",
   "python_version": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
   "platform": "Windows-10-10.0.26200-SP0",
   "package_versions": {
     "numpy": "2.4.4",
-    "pandas": "3.0.2",
+    "pandas": "3.0.3",
     "scipy": "1.17.1",
     "matplotlib": "3.10.9"
   },
@@ -49,7 +49,8 @@
     "progress_every": 100
   },
   "config": {
-    "PROJECT_NAME": "toy",
+    "PROJECT_NAME": "toyv3",
+    "INPUT_SCHEMA_VERSION": 2,
     "ACTIVE_SCENARIOS": [
       "mean",
       "lr",

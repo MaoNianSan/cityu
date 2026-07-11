@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import numpy as np
+from scipy.special import logit
 
 import config
 from baselines import fit_classic
@@ -36,6 +37,15 @@ def run_preflight_checks() -> None:
     _assert_close(
         data.y_logistic, data_again.y_logistic, "same seed reproduces logistic Y"
     )
+    _assert_close(data.z_proxy_labeled, data_again.z_proxy_labeled, "same seed reproduces labelled proxy Z", atol=0.0)
+    _assert_close(data.z_proxy_unlabeled, data_again.z_proxy_unlabeled, "same seed reproduces unlabelled proxy Z", atol=0.0)
+    if data.z_proxy_labeled.shape != (config.N_LABELED,) or data.z_proxy_unlabeled.shape != (config.N_UNLABELED,):
+        raise AssertionError("Proxy Z shape is incorrect.")
+    if not (np.isfinite(data.z_proxy_labeled).all() and np.isfinite(data.z_proxy_unlabeled).all()):
+        raise AssertionError("Proxy Z contains non-finite values.")
+    different = generate_replicate(seed=98765, replicate_id=1)
+    if np.array_equal(data.z_proxy_labeled, different.z_proxy_labeled):
+        raise AssertionError("Different replicates reused labelled proxy Z.")
 
     for scenario in all_scenarios():
         p1 = generate_proxy(data, scenario, "P1")
@@ -73,28 +83,28 @@ def run_preflight_checks() -> None:
             p3.error_unlabeled**2,
             "P2/P3 unlabelled equal pointwise squared error",
         )
-        _assert_close(
-            p4.error_labeled,
-            10.0 * p1.error_labeled,
-            "P4/P1 labelled shared U and amplitude ratio",
-        )
-        _assert_close(
-            p4.error_unlabeled,
-            10.0 * p1.error_unlabeled,
-            "P4/P1 unlabelled shared U and amplitude ratio",
-        )
-
         if scenario.family == "logistic":
             for proxy in (p1, p2, p3, p4):
                 if not (
-                    np.all(proxy.f_labeled >= 0.0) and np.all(proxy.f_labeled <= 1.0)
+                    np.all(proxy.f_labeled > 0.0) and np.all(proxy.f_labeled < 1.0)
                 ):
                     raise AssertionError("Logistic labelled proxy is outside [0, 1].")
                 if not (
-                    np.all(proxy.f_unlabeled >= 0.0)
-                    and np.all(proxy.f_unlabeled <= 1.0)
+                    np.all(proxy.f_unlabeled > 0.0)
+                    and np.all(proxy.f_unlabeled < 1.0)
                 ):
                     raise AssertionError("Logistic unlabelled proxy is outside [0, 1].")
+            eta_l = scenario.linear_predictor(data.x_labeled)
+            eta_u = scenario.linear_predictor(data.x_unlabeled)
+            _assert_close(p1.error_labeled, p1.f_labeled - scenario.conditional_mean(data.x_labeled), "logistic P1 error definition")
+            _assert_close(p4.error_labeled, p4.f_labeled - scenario.conditional_mean(data.x_labeled), "logistic P4 error definition")
+            _assert_close(logit(p4.f_labeled) - eta_l, 10.0 * (logit(p1.f_labeled) - eta_l), "logistic labelled latent ratio", atol=1e-10)
+            _assert_close(logit(p4.f_unlabeled) - eta_u, 10.0 * (logit(p1.f_unlabeled) - eta_u), "logistic unlabelled latent ratio", atol=1e-10)
+        else:
+            _assert_close(p1.error_labeled, config.P1 * data.z_proxy_labeled, "Gaussian P1 labelled normal error", atol=1e-12)
+            _assert_close(p4.error_labeled, config.P4 * data.z_proxy_labeled, "Gaussian P4 labelled normal error", atol=1e-12)
+            _assert_close(p4.error_labeled, 10.0 * p1.error_labeled, "Gaussian labelled 10x ratio", atol=1e-12)
+            _assert_close(p4.error_unlabeled, 10.0 * p1.error_unlabeled, "Gaussian unlabelled 10x ratio", atol=1e-12)
 
         # Endpoint identities for the PPI++ family.
         classic = fit_classic(scenario, data)

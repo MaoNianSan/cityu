@@ -41,12 +41,21 @@ The default data sizes are `n=60` labelled observations and `N=600` unlabelled o
 
 ### Controlled proxy-output regimes
 
-For each scenario, let \(z(X)\) be the true conditional mean. The proxy output is  $f(X)=z(X)+e(X).$
+For Gaussian mean estimation and LR, the additive proxy is \(f(X)=z(X)+e(X)\), and P1/P4 share one \(Z\sim N(0,1)\) realization:
 
-- `P1`: \(e=0.02U\),   $ U \sim \mathrm{U}(-1,1)$
+- `P1`: \(e=0.02Z\);
 - `P2`: \(e=0.06\);
 - `P3`: $e=0.06(2X_2-1)$;
-- `P4`: \(e=0.20U\).
+- `P4`: \(e=0.20Z\).
+
+Hence Gaussian P4 error is pointwise ten times P1 error, and 0.02/0.20 are standard-deviation scales. For logistic GLM,
+
+\[
+f_{P1}(X)=\operatorname{expit}\{\eta(X)+0.02Z\},\qquad
+f_{P4}(X)=\operatorname{expit}\{\eta(X)+0.20Z\}.
+\]
+
+The reported logistic error is still \(f(X)-z(X)\). No clipping is used. The probability-scale errors need not have a 10:1 ratio, but the latent perturbations do; P2/P3 retain their existing definitions.
 
 These are controlled pseudo learner outputs, not separately trained ML algorithms.
 
@@ -68,8 +77,9 @@ $$
 
 Implementation note:
 
-- PPI++V1 uses `ppi-python` confidence intervals and reconstructs a diagonal covariance matrix from the returned marginal intervals to match the existing `EstimatorResult` interface.
-- This diagonal reconstruction is used only for compatibility with CI width and coverage calculations.
+- PPI++V1 calls `ppi-python` separately at 90%, 95%, and 97.5%; formal coverage and width use these direct package intervals.
+- A diagonal covariance reconstructed from the direct 95% interval remains only for compatibility and diagnostics.
+- With `lam=None`, package-internal lambda is not exposed and no numeric replicate-level lambda is claimed.
 - PPI++V2 keeps full internal diagnostics for lambda grid, covariance trace, and selected lambda.
 - V1 and V2 are not expected to be numerically identical, because their tuning and covariance construction differ.
 
@@ -231,7 +241,7 @@ $$
 \right).
 $$
 
-This diagonal covariance is only an interface reconstruction for CI-width and coverage calculation. It should not be interpreted as a full internally computed sandwich covariance matrix.
+This diagonal covariance is only an interface reconstruction and is not used for formal CI width or coverage. The 90%, 95%, and 97.5% intervals are requested directly using two-sided alpha 0.10, 0.05, and 0.025 respectively.
 
 ### 2.3 PPI++V2
 
@@ -433,4 +443,3 @@ The grey reference regions/bars are 95% binomial Monte-Carlo ranges under exact 
 ## 8. Notebook scope
 
 `ipy/result_audit.ipynb` only reads existing `output/fast/` and `output/full/` files. It does not generate data, refit estimators, or overwrite formal output.
-

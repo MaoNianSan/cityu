@@ -12,7 +12,7 @@ from scipy.stats import norm
 
 import config
 from data_generation import SimulationData
-from formulation import EstimatorResult, ScenarioSpec
+from formulation import EstimatorResult, ScenarioSpec, interval_key
 from learner_proxy import PredictionBundle
 from ppi import fit_weighted_ppi
 
@@ -164,9 +164,10 @@ def _call_ppi_python_ci(
     ci_fn: Callable[..., tuple[object, object]],
     data: SimulationData,
     prediction: PredictionBundle,
+    confidence_level: float,
 ) -> tuple[object, object]:
     y_labeled = data.outcome_for(scenario)
-    alpha = 1.0 - float(config.PPI_PLUS_PLUS_V1_COVARIANCE_CONFIDENCE_LEVEL)
+    alpha = 1.0 - float(confidence_level)
     if scenario.family == "mean":
         return ci_fn(
             y_labeled,
@@ -213,15 +214,17 @@ def fit_ppi_plus_plus_v1(
 ) -> EstimatorResult:
     """Fit package-standard PPI++ via ppi-python with ``lam=None``.
 
-    ppi-python returns marginal confidence intervals rather than the full
-    covariance matrix expected by this toy pipeline, so the covariance is a
-    diagonal matrix backed out from those intervals.
+    Every configured marginal interval is requested directly from ppi-python.
+    A 95% diagonal reconstruction remains only for interface compatibility.
     """
     method = "ppi_plus_plus_v1"
     p = len(scenario.target_names)
     diagnostics = {
-        "lambda_selection_mode": "ppi_python_lam_none",
-        "covariance_source": "diagonal_backed_out_from_ppi_python_ci",
+        "lambda_selection_mode": "ppi_python_internal_lam_none",
+        "lambda_value_available": False,
+        "lambda_recomputed_per_ci_call": True,
+        "interval_source": "ppi_python_direct",
+        "covariance_source": "diagonal_reconstruction_for_compatibility_only",
         "covariance_confidence_level": float(
             config.PPI_PLUS_PLUS_V1_COVARIANCE_CONFIDENCE_LEVEL
         ),
@@ -232,11 +235,17 @@ def fit_ppi_plus_plus_v1(
             _call_ppi_python_pointestimate(scenario, pointestimate_fn, data, prediction),
             p,
         )
-        lower, upper = _validate_ci_bounds(
-            *_call_ppi_python_ci(scenario, ci_fn, data, prediction),
-            p,
-        )
-        covariance = _diagonal_covariance_from_ci(lower, upper)
+        intervals = {}
+        calls = []
+        for level in config.CONFIDENCE_LEVELS:
+            lower, upper = _validate_ci_bounds(
+                *_call_ppi_python_ci(scenario, ci_fn, data, prediction, level), p
+            )
+            intervals[interval_key(level)] = (lower, upper)
+            calls.append({"confidence_level": float(level), "alpha": 1.0 - float(level), "lam": None})
+        compatibility = intervals[interval_key(config.PPI_PLUS_PLUS_V1_COVARIANCE_CONFIDENCE_LEVEL)]
+        covariance = _diagonal_covariance_from_ci(*compatibility)
+        diagnostics["interval_calls"] = calls
         if not (np.all(np.isfinite(estimate)) and np.all(np.isfinite(covariance))):
             raise ValueError("ppi-python returned non-finite estimate or covariance.")
     except Exception as exc:
@@ -248,6 +257,7 @@ def fit_ppi_plus_plus_v1(
         estimate=estimate,
         covariance=covariance,
         diagnostics=diagnostics,
+        intervals=intervals,
     )
 
 

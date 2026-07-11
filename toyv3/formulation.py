@@ -28,6 +28,9 @@ class ScenarioSpec:
     def generate_outcome(self, x: Array, rng: np.random.Generator) -> Array:
         return self.outcome_fn(x, rng)
 
+    def linear_predictor(self, x: Array) -> Array:
+        return design_signal(x)
+
 
 @dataclass
 class EstimatorResult:
@@ -38,6 +41,21 @@ class EstimatorResult:
     covariance: Array
     converged: bool = True
     diagnostics: dict = field(default_factory=dict)
+    intervals: dict[float, tuple[Array, Array]] | None = None
+
+
+def interval_key(confidence_level: float) -> float:
+    return round(float(confidence_level), 6)
+
+
+def get_interval(result: EstimatorResult, confidence_level: float) -> tuple[Array, Array]:
+    key = interval_key(confidence_level)
+    if result.intervals is not None and key in result.intervals:
+        lower, upper = result.intervals[key]
+        return np.asarray(lower, dtype=float), np.asarray(upper, dtype=float)
+    z_value = float(__import__("scipy.stats", fromlist=["norm"]).norm.ppf(0.5 + key / 2.0))
+    se = np.sqrt(np.maximum(np.diag(np.asarray(result.covariance, dtype=float)), 0.0))
+    return result.estimate - z_value * se, result.estimate + z_value * se
 
 
 def design_signal(x: Array) -> Array:

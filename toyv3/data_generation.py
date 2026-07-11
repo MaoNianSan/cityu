@@ -23,8 +23,8 @@ class SimulationData:
     x_unlabeled: Array
     y_gaussian: Array
     y_logistic: Array
-    u_labeled: Array
-    u_unlabeled: Array
+    z_proxy_labeled: Array
+    z_proxy_unlabeled: Array
 
     def outcome_for(self, scenario: ScenarioSpec | str) -> Array:
         scenario_name = scenario if isinstance(scenario, str) else scenario.name
@@ -57,9 +57,9 @@ def generate_replicate(seed: int, replicate_id: int) -> SimulationData:
     y_gaussian = gaussian_spec.generate_outcome(x_labeled, _rng(seed, replicate_id, 21))
     y_logistic = logistic_spec.generate_outcome(x_labeled, _rng(seed, replicate_id, 22))
 
-    # P1 and P4 share these U draws; only their amplitudes differ.
-    u_labeled = _rng(seed, replicate_id, 31).uniform(-1.0, 1.0, size=config.N_LABELED)
-    u_unlabeled = _rng(seed, replicate_id, 32).uniform(-1.0, 1.0, size=config.N_UNLABELED)
+    # P1 and P4 share these standard-normal draws; only their scales differ.
+    z_proxy_labeled = _rng(seed, replicate_id, 31).normal(0.0, 1.0, size=config.N_LABELED)
+    z_proxy_unlabeled = _rng(seed, replicate_id, 32).normal(0.0, 1.0, size=config.N_UNLABELED)
 
     return SimulationData(
         seed=int(seed),
@@ -68,8 +68,8 @@ def generate_replicate(seed: int, replicate_id: int) -> SimulationData:
         x_unlabeled=x_unlabeled,
         y_gaussian=y_gaussian,
         y_logistic=y_logistic,
-        u_labeled=u_labeled,
-        u_unlabeled=u_unlabeled,
+        z_proxy_labeled=z_proxy_labeled,
+        z_proxy_unlabeled=z_proxy_unlabeled,
     )
 
 
@@ -78,20 +78,23 @@ def save_replicate(data: SimulationData, destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     np.savez_compressed(
         destination,
+        schema_version=np.asarray([config.INPUT_SCHEMA_VERSION], dtype=int),
         seed=np.asarray([data.seed], dtype=int),
         replicate_id=np.asarray([data.replicate_id], dtype=int),
         x_labeled=data.x_labeled,
         x_unlabeled=data.x_unlabeled,
         y_gaussian=data.y_gaussian,
         y_logistic=data.y_logistic,
-        u_labeled=data.u_labeled,
-        u_unlabeled=data.u_unlabeled,
+        z_proxy_labeled=data.z_proxy_labeled,
+        z_proxy_unlabeled=data.z_proxy_unlabeled,
     )
 
 
 def load_replicate(source: Path) -> SimulationData:
     """Load a replicate saved by :func:`save_replicate`."""
     with np.load(source) as archive:
+        if "schema_version" not in archive.files or int(archive["schema_version"][0]) != config.INPUT_SCHEMA_VERSION:
+            raise ValueError(f"Input cache schema mismatch in {source}; regenerate the cache.")
         return SimulationData(
             seed=int(archive["seed"][0]),
             replicate_id=int(archive["replicate_id"][0]),
@@ -99,6 +102,6 @@ def load_replicate(source: Path) -> SimulationData:
             x_unlabeled=archive["x_unlabeled"],
             y_gaussian=archive["y_gaussian"],
             y_logistic=archive["y_logistic"],
-            u_labeled=archive["u_labeled"],
-            u_unlabeled=archive["u_unlabeled"],
+            z_proxy_labeled=archive["z_proxy_labeled"],
+            z_proxy_unlabeled=archive["z_proxy_unlabeled"],
         )

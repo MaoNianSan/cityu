@@ -1,5 +1,6 @@
 {
-  "PROJECT_NAME": "toy",
+  "PROJECT_NAME": "toyv3",
+  "INPUT_SCHEMA_VERSION": 2,
   "ACTIVE_SCENARIOS": [
     "mean",
     "lr",

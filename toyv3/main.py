@@ -20,7 +20,7 @@ import config
 from baselines import fit_classic, fit_naive_ml
 from checks import run_preflight_checks
 from data_generation import generate_replicate, save_replicate
-from formulation import EstimatorResult, ScenarioSpec, all_scenarios
+from formulation import EstimatorResult, ScenarioSpec, all_scenarios, get_interval
 from learner_proxy import generate_proxy
 from plotting import plot_all_results
 from ppi import fit_ppi
@@ -176,6 +176,10 @@ def _diagnostic_row(
         ),
         "covariance_source": diagnostics.get("covariance_source"),
         "covariance_confidence_level": diagnostics.get("covariance_confidence_level"),
+        "interval_source": diagnostics.get("interval_source", "normal_from_covariance"),
+        "lambda_value_available": diagnostics.get("lambda_value_available"),
+        "lambda_recomputed_per_ci_call": diagnostics.get("lambda_recomputed_per_ci_call"),
+        "interval_calls": json.dumps(diagnostics.get("interval_calls")) if diagnostics.get("interval_calls") is not None else None,
         "exception": diagnostics.get("exception"),
         "failure_reason": diagnostics.get("failure_reason"),
     }
@@ -225,10 +229,10 @@ def _record_result(
         estimate = float(estimates[index])
 
         for confidence_level in config.CONFIDENCE_LEVELS:
-            critical_value = _critical_value(confidence_level)
-            width = 2.0 * critical_value * standard_error
-            lower = estimate - critical_value * standard_error
-            upper = estimate + critical_value * standard_error
+            lower_all, upper_all = get_interval(result, confidence_level)
+            lower = float(lower_all[index])
+            upper = float(upper_all[index])
+            width = upper - lower
             covered = _interval_covers(lower, upper, target_value)
             key = (seed, scenario.name, target, profile, method, confidence_level)
             accumulator.add(key, width, covered)
@@ -243,6 +247,7 @@ def _record_result(
                         "profile": profile,
                         "method": method,
                         "confidence_level": confidence_level,
+                        "interval_source": result.diagnostics.get("interval_source", "normal_from_covariance"),
                         "estimate": estimate,
                         "standard_error": standard_error,
                         "ci_lower": lower,

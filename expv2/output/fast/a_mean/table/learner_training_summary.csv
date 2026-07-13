@@ -1,0 +1,9 @@
+experiment,learner,learner_label,learner_model,tuned_params,selection_count,selection_rate,validation_score_mean,validation_score_sd,quality_metric,quality_mean,quality_sd,n_train,n_inference
+a_mean,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 50}",2,0.1,0.12315659138062392,0.002443770334774536,Brier,0.1246754036014625,0.00034777354431269724,4794,19176
+a_mean,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",2,0.1,0.12431417799088647,0.0013962296185464635,Brier,0.13069996958259,0.00015611808089792411,4794,19176
+a_mean,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",16,0.8,0.12244429317177889,0.004735869082438077,Brier,0.12309767196481868,0.0018918524601239182,4794,19176
+a_mean,gb,GB,Histogram Gradient Boosting Classifier,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",20,1.0,0.11821986859387282,0.0048477990954032095,Brier,0.11753305647968734,0.0011695562191112348,4794,19176
+a_mean,lin,LIN,Logistic Regression,"{""model__C"": 1.0}",3,0.15,0.12294825885308934,0.006399015347258963,Brier,0.11811717107157854,0.0012324562745651766,4794,19176
+a_mean,lin,LIN,Logistic Regression,"{""model__C"": 10.0}",17,0.85,0.11605408263245254,0.003654164106950284,Brier,0.11714419161690073,0.0009596336645557318,4794,19176
+a_mean,rf,RF,Random Forest Classifier,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",9,0.45,0.11682132865206585,0.006272730939998165,Brier,0.11847849470002868,0.0010582023388194044,4794,19176
+a_mean,rf,RF,Random Forest Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",11,0.55,0.11875663717080737,0.0017583953618147063,Brier,0.11790364765842343,0.0011317218550281234,4794,19176

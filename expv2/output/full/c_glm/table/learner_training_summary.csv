@@ -1,0 +1,12 @@
+experiment,learner,learner_label,learner_model,tuned_params,selection_count,selection_rate,validation_score_mean,validation_score_sd,quality_metric,quality_mean,quality_sd,n_train,n_inference
+c_glm,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",60,0.6,0.11811656826972447,0.009301747099670177,Brier,0.11792193144328102,0.0038878453454054777,990,3963
+c_glm,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 50}",5,0.05,0.12789008705051494,0.011231595300522956,Brier,0.13320361310044704,0.0029457177705248467,990,3963
+c_glm,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",33,0.33,0.1143469411322504,0.01234823460523199,Brier,0.12383512975036619,0.005432204799620456,990,3963
+c_glm,dt,DT,Decision Tree Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",2,0.02,0.132397422728693,0.008666082269673272,Brier,0.13302176035223076,0.0086942098850768,990,3963
+c_glm,gb,GB,Histogram Gradient Boosting Classifier,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",2,0.02,0.10148966492060782,0.011213834141264431,Brier,0.11639135005914947,0.0016929140216502773,990,3963
+c_glm,gb,GB,Histogram Gradient Boosting Classifier,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",98,0.98,0.10839021908384369,0.012443955754521478,Brier,0.1067198019658513,0.003777241871431791,990,3963
+c_glm,lin,LIN,Logistic Regression,"{""model__C"": 0.1}",38,0.38,0.11058510733093514,0.00825129173832339,Brier,0.10771843999638937,0.003242584907168443,990,3963
+c_glm,lin,LIN,Logistic Regression,"{""model__C"": 1.0}",58,0.58,0.10210136772169846,0.008552082418851206,Brier,0.10730990639406683,0.002869820768585803,990,3963
+c_glm,lin,LIN,Logistic Regression,"{""model__C"": 10.0}",4,0.04,0.09832574901156989,0.003130413638743602,Brier,0.11224273294496401,0.0040402819486557735,990,3963
+c_glm,rf,RF,Random Forest Classifier,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3,0.03,0.11313126908500577,0.011371503985786235,Brier,0.11762244178980374,0.002221042264661382,990,3963
+c_glm,rf,RF,Random Forest Classifier,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",97,0.97,0.11853925502838136,0.00920155357234272,Brier,0.11509387087699093,0.004391888343929118,990,3963

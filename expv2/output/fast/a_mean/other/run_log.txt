@@ -1,0 +1,22 @@
+experiment=a_mean mode=fast replicates=20 n=239695 truth=[0.22373850101170237]
+replicate=0 completed elapsed=14.0s
+replicate=1 completed elapsed=27.4s
+replicate=2 completed elapsed=43.9s
+replicate=3 completed elapsed=56.9s
+replicate=4 completed elapsed=69.1s
+replicate=5 completed elapsed=81.6s
+replicate=6 completed elapsed=96.2s
+replicate=7 completed elapsed=109.8s
+replicate=8 completed elapsed=122.5s
+replicate=9 completed elapsed=138.9s
+replicate=10 completed elapsed=152.9s
+replicate=11 completed elapsed=171.3s
+replicate=12 completed elapsed=184.9s
+replicate=13 completed elapsed=199.4s
+replicate=14 completed elapsed=216.2s
+replicate=15 completed elapsed=230.7s
+replicate=16 completed elapsed=244.9s
+replicate=17 completed elapsed=260.4s
+replicate=18 completed elapsed=276.2s
+replicate=19 completed elapsed=290.4s
+finished elapsed=290.6s

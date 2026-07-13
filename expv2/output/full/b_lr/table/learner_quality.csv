@@ -1,0 +1,401 @@
+experiment,replicate,learner,learner_label,learner_model,quality_metric,quality_value,tuned_params,validation_score,n_train,n_inference
+b_lr,0,dt,DT,Decision Tree Regressor,MSE,4673816038.135477,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",5161578031.314678,6364,25458
+b_lr,0,gb,GB,Histogram Gradient Boosting Regressor,MSE,4079035751.446505,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4859210780.457799,6364,25458
+b_lr,0,lin,LIN,Ridge Regression,MSE,4433795513.908024,"{""model__alpha"": 10.0}",5247488346.932763,6364,25458
+b_lr,0,rf,RF,Random Forest Regressor,MSE,4122612947.032312,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4968398133.6532,6364,25458
+b_lr,1,dt,DT,Decision Tree Regressor,MSE,4393976728.008498,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3870187519.4685874,6364,25458
+b_lr,1,gb,GB,Histogram Gradient Boosting Regressor,MSE,4024946085.393938,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3362413483.304223,6364,25458
+b_lr,1,lin,LIN,Ridge Regression,MSE,4469409160.3903885,"{""model__alpha"": 10.0}",4074529904.534718,6364,25458
+b_lr,1,rf,RF,Random Forest Regressor,MSE,4086556491.358387,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3461710014.305064,6364,25458
+b_lr,2,dt,DT,Decision Tree Regressor,MSE,4493951157.978202,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",5044599581.914637,6364,25458
+b_lr,2,gb,GB,Histogram Gradient Boosting Regressor,MSE,3973318403.7522807,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4666109951.862932,6364,25458
+b_lr,2,lin,LIN,Ridge Regression,MSE,4376132812.99849,"{""model__alpha"": 10.0}",5364943460.228644,6364,25458
+b_lr,2,rf,RF,Random Forest Regressor,MSE,3993286818.781742,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4879951497.885018,6364,25458
+b_lr,3,dt,DT,Decision Tree Regressor,MSE,4326385618.2170315,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3358207275.3616805,6364,25458
+b_lr,3,gb,GB,Histogram Gradient Boosting Regressor,MSE,4047733448.6064596,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3331328144.357042,6364,25458
+b_lr,3,lin,LIN,Ridge Regression,MSE,4468896940.180843,"{""model__alpha"": 10.0}",3577858406.4306636,6364,25458
+b_lr,3,rf,RF,Random Forest Regressor,MSE,4067465629.2806644,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3198495560.031468,6364,25458
+b_lr,4,dt,DT,Decision Tree Regressor,MSE,4226748234.343955,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5310794609.159054,6364,25458
+b_lr,4,gb,GB,Histogram Gradient Boosting Regressor,MSE,3982424127.453382,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",5008514375.924239,6364,25458
+b_lr,4,lin,LIN,Ridge Regression,MSE,4249054169.3645954,"{""model__alpha"": 10.0}",5494625742.041266,6364,25458
+b_lr,4,rf,RF,Random Forest Regressor,MSE,3902660721.0832596,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5171572555.829391,6364,25458
+b_lr,5,dt,DT,Decision Tree Regressor,MSE,4249118142.3985386,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3840420893.0459228,6364,25458
+b_lr,5,gb,GB,Histogram Gradient Boosting Regressor,MSE,3940404866.5394692,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3473035192.746213,6364,25458
+b_lr,5,lin,LIN,Ridge Regression,MSE,4342446178.193753,"{""model__alpha"": 10.0}",3757748971.590541,6364,25458
+b_lr,5,rf,RF,Random Forest Regressor,MSE,4044805309.5918155,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3476946350.1116524,6364,25458
+b_lr,6,dt,DT,Decision Tree Regressor,MSE,4393057862.486587,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4658295457.968482,6364,25458
+b_lr,6,gb,GB,Histogram Gradient Boosting Regressor,MSE,4066654272.0842505,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4572922207.4090185,6364,25458
+b_lr,6,lin,LIN,Ridge Regression,MSE,4421674914.259739,"{""model__alpha"": 10.0}",4945690539.211412,6364,25458
+b_lr,6,rf,RF,Random Forest Regressor,MSE,4072065938.5471354,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4550147565.454844,6364,25458
+b_lr,7,dt,DT,Decision Tree Regressor,MSE,4559558778.589911,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",5357264011.603517,6364,25458
+b_lr,7,gb,GB,Histogram Gradient Boosting Regressor,MSE,4095801482.3531713,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4879733576.440474,6364,25458
+b_lr,7,lin,LIN,Ridge Regression,MSE,4427158937.623183,"{""model__alpha"": 10.0}",5413752046.9687395,6364,25458
+b_lr,7,rf,RF,Random Forest Regressor,MSE,4112543467.491456,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5052374658.559978,6364,25458
+b_lr,8,dt,DT,Decision Tree Regressor,MSE,4067475563.667456,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4287100945.132651,6364,25458
+b_lr,8,gb,GB,Histogram Gradient Boosting Regressor,MSE,3797242230.1490445,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4242979232.067565,6364,25458
+b_lr,8,lin,LIN,Ridge Regression,MSE,4182232753.509635,"{""model__alpha"": 10.0}",4362833592.914954,6364,25458
+b_lr,8,rf,RF,Random Forest Regressor,MSE,3858509969.38016,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4056797533.8126917,6364,25458
+b_lr,9,dt,DT,Decision Tree Regressor,MSE,4657039155.100279,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 50}",5235320453.341194,6364,25458
+b_lr,9,gb,GB,Histogram Gradient Boosting Regressor,MSE,4096002341.578961,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4660880240.8947315,6364,25458
+b_lr,9,lin,LIN,Ridge Regression,MSE,4461829958.093161,"{""model__alpha"": 10.0}",4926559737.936084,6364,25458
+b_lr,9,rf,RF,Random Forest Regressor,MSE,4131682970.925673,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4784925376.633358,6364,25458
+b_lr,10,dt,DT,Decision Tree Regressor,MSE,4469902147.874646,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4085238312.198735,6364,25458
+b_lr,10,gb,GB,Histogram Gradient Boosting Regressor,MSE,4264835062.089274,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3928805708.6673474,6364,25458
+b_lr,10,lin,LIN,Ridge Regression,MSE,4595595869.199429,"{""model__alpha"": 10.0}",4195205860.4259443,6364,25458
+b_lr,10,rf,RF,Random Forest Regressor,MSE,4267422016.7309675,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3870567043.6908116,6364,25458
+b_lr,11,dt,DT,Decision Tree Regressor,MSE,4694541719.096111,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5194616716.731713,6364,25458
+b_lr,11,gb,GB,Histogram Gradient Boosting Regressor,MSE,4373088487.538868,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4710445111.726017,6364,25458
+b_lr,11,lin,LIN,Ridge Regression,MSE,4773647067.751707,"{""model__alpha"": 10.0}",5209735099.614435,6364,25458
+b_lr,11,rf,RF,Random Forest Regressor,MSE,4327290069.935191,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4816925294.118479,6364,25458
+b_lr,12,dt,DT,Decision Tree Regressor,MSE,4579869928.0507145,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5617885513.0530405,6364,25458
+b_lr,12,gb,GB,Histogram Gradient Boosting Regressor,MSE,4180120153.3092737,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5385075565.188215,6364,25458
+b_lr,12,lin,LIN,Ridge Regression,MSE,4572745690.700907,"{""model__alpha"": 10.0}",5708451572.559346,6364,25458
+b_lr,12,rf,RF,Random Forest Regressor,MSE,4286184197.1516867,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5388979900.240276,6364,25458
+b_lr,13,dt,DT,Decision Tree Regressor,MSE,4557298710.652817,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4613345860.285993,6364,25458
+b_lr,13,gb,GB,Histogram Gradient Boosting Regressor,MSE,4181653336.0711265,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4404456997.167208,6364,25458
+b_lr,13,lin,LIN,Ridge Regression,MSE,4605515652.86925,"{""model__alpha"": 10.0}",4806300809.631115,6364,25458
+b_lr,13,rf,RF,Random Forest Regressor,MSE,4245788838.390426,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4345404883.941757,6364,25458
+b_lr,14,dt,DT,Decision Tree Regressor,MSE,4410368727.642891,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4364075557.340238,6364,25458
+b_lr,14,gb,GB,Histogram Gradient Boosting Regressor,MSE,4051582465.695544,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4127582843.080021,6364,25458
+b_lr,14,lin,LIN,Ridge Regression,MSE,4460998338.856726,"{""model__alpha"": 10.0}",4377078980.933886,6364,25458
+b_lr,14,rf,RF,Random Forest Regressor,MSE,4098731424.709174,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4101156656.3928366,6364,25458
+b_lr,15,dt,DT,Decision Tree Regressor,MSE,4404445612.72428,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5517023386.763125,6364,25458
+b_lr,15,gb,GB,Histogram Gradient Boosting Regressor,MSE,4027083442.07456,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5186035972.288242,6364,25458
+b_lr,15,lin,LIN,Ridge Regression,MSE,4453788635.945205,"{""model__alpha"": 10.0}",5143627138.314609,6364,25458
+b_lr,15,rf,RF,Random Forest Regressor,MSE,4139670693.219066,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5005764185.330764,6364,25458
+b_lr,16,dt,DT,Decision Tree Regressor,MSE,4110716946.441626,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4313572625.738971,6364,25458
+b_lr,16,gb,GB,Histogram Gradient Boosting Regressor,MSE,3842218391.8678026,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4158396556.4347725,6364,25458
+b_lr,16,lin,LIN,Ridge Regression,MSE,4206550256.9674754,"{""model__alpha"": 10.0}",4402438044.8898325,6364,25458
+b_lr,16,rf,RF,Random Forest Regressor,MSE,3903335213.747457,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4028317085.1135316,6364,25458
+b_lr,17,dt,DT,Decision Tree Regressor,MSE,4197161076.3736467,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4185842484.7947154,6364,25458
+b_lr,17,gb,GB,Histogram Gradient Boosting Regressor,MSE,3958584371.6477065,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4084624643.285317,6364,25458
+b_lr,17,lin,LIN,Ridge Regression,MSE,4349643138.181798,"{""model__alpha"": 10.0}",4174776880.6535134,6364,25458
+b_lr,17,rf,RF,Random Forest Regressor,MSE,3960775672.5043955,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3901599325.1045504,6364,25458
+b_lr,18,dt,DT,Decision Tree Regressor,MSE,4665823265.952231,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4534723448.537097,6364,25458
+b_lr,18,gb,GB,Histogram Gradient Boosting Regressor,MSE,4204061557.0185966,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4336077650.111979,6364,25458
+b_lr,18,lin,LIN,Ridge Regression,MSE,4599065635.394132,"{""model__alpha"": 10.0}",4657181026.70736,6364,25458
+b_lr,18,rf,RF,Random Forest Regressor,MSE,4278910417.344744,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4240353849.354481,6364,25458
+b_lr,19,dt,DT,Decision Tree Regressor,MSE,4363790663.581006,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4478870969.550977,6364,25458
+b_lr,19,gb,GB,Histogram Gradient Boosting Regressor,MSE,4085444389.884802,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4408405267.202472,6364,25458
+b_lr,19,lin,LIN,Ridge Regression,MSE,4413194733.40804,"{""model__alpha"": 10.0}",4670617743.384006,6364,25458
+b_lr,19,rf,RF,Random Forest Regressor,MSE,4105684951.428561,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4342854013.951671,6364,25458
+b_lr,20,dt,DT,Decision Tree Regressor,MSE,4243015646.838642,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4772056305.934642,6364,25458
+b_lr,20,gb,GB,Histogram Gradient Boosting Regressor,MSE,3954525822.6938143,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4428841249.841749,6364,25458
+b_lr,20,lin,LIN,Ridge Regression,MSE,4396675893.117405,"{""model__alpha"": 1.0}",4802435298.802381,6364,25458
+b_lr,20,rf,RF,Random Forest Regressor,MSE,4029705395.1513057,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4601080306.679913,6364,25458
+b_lr,21,dt,DT,Decision Tree Regressor,MSE,4365298635.892456,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4013018152.2084846,6364,25458
+b_lr,21,gb,GB,Histogram Gradient Boosting Regressor,MSE,4024599959.120872,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3812601658.720269,6364,25458
+b_lr,21,lin,LIN,Ridge Regression,MSE,4428256662.412909,"{""model__alpha"": 10.0}",4296965438.491085,6364,25458
+b_lr,21,rf,RF,Random Forest Regressor,MSE,4075324963.0204773,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3863013325.287795,6364,25458
+b_lr,22,dt,DT,Decision Tree Regressor,MSE,4235765122.4461546,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4889597689.946448,6364,25458
+b_lr,22,gb,GB,Histogram Gradient Boosting Regressor,MSE,3913388003.007483,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4506644046.599168,6364,25458
+b_lr,22,lin,LIN,Ridge Regression,MSE,4345308212.6914425,"{""model__alpha"": 10.0}",4868566069.470848,6364,25458
+b_lr,22,rf,RF,Random Forest Regressor,MSE,3990678114.6090508,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4630413737.623281,6364,25458
+b_lr,23,dt,DT,Decision Tree Regressor,MSE,4539466159.968,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3724859594.3992085,6364,25458
+b_lr,23,gb,GB,Histogram Gradient Boosting Regressor,MSE,4209277822.243185,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3602626970.161959,6364,25458
+b_lr,23,lin,LIN,Ridge Regression,MSE,4646650384.508254,"{""model__alpha"": 10.0}",3788752426.3228617,6364,25458
+b_lr,23,rf,RF,Random Forest Regressor,MSE,4247403554.2800274,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3573766957.652429,6364,25458
+b_lr,24,dt,DT,Decision Tree Regressor,MSE,4688353477.742383,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3422666583.8324976,6364,25458
+b_lr,24,gb,GB,Histogram Gradient Boosting Regressor,MSE,4295256478.750435,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3272302955.3486257,6364,25458
+b_lr,24,lin,LIN,Ridge Regression,MSE,4746906181.385151,"{""model__alpha"": 10.0}",3650608810.263402,6364,25458
+b_lr,24,rf,RF,Random Forest Regressor,MSE,4400469473.587939,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3229912112.3974123,6364,25458
+b_lr,25,dt,DT,Decision Tree Regressor,MSE,4453333216.616665,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5451787968.066838,6364,25458
+b_lr,25,gb,GB,Histogram Gradient Boosting Regressor,MSE,4025501538.380732,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4987656076.087706,6364,25458
+b_lr,25,lin,LIN,Ridge Regression,MSE,4438451156.710812,"{""model__alpha"": 10.0}",5322158202.063711,6364,25458
+b_lr,25,rf,RF,Random Forest Regressor,MSE,4153343694.3958654,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4994055764.214585,6364,25458
+b_lr,26,dt,DT,Decision Tree Regressor,MSE,4321313842.189016,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5232683403.175706,6364,25458
+b_lr,26,gb,GB,Histogram Gradient Boosting Regressor,MSE,4016871452.975126,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4891600357.009957,6364,25458
+b_lr,26,lin,LIN,Ridge Regression,MSE,4342653017.258893,"{""model__alpha"": 10.0}",5047384003.998506,6364,25458
+b_lr,26,rf,RF,Random Forest Regressor,MSE,4049322295.7919574,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4913826733.621967,6364,25458
+b_lr,27,dt,DT,Decision Tree Regressor,MSE,4575662171.508132,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4227385555.6024475,6364,25458
+b_lr,27,gb,GB,Histogram Gradient Boosting Regressor,MSE,4298476548.10752,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3790707193.926724,6364,25458
+b_lr,27,lin,LIN,Ridge Regression,MSE,4667512193.897321,"{""model__alpha"": 10.0}",4097675391.3629847,6364,25458
+b_lr,27,rf,RF,Random Forest Regressor,MSE,4299974857.817791,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3871354374.709497,6364,25458
+b_lr,28,dt,DT,Decision Tree Regressor,MSE,4426143403.705315,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5127751837.42406,6364,25458
+b_lr,28,gb,GB,Histogram Gradient Boosting Regressor,MSE,4091279705.553244,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4764300742.029689,6364,25458
+b_lr,28,lin,LIN,Ridge Regression,MSE,4450352912.863732,"{""model__alpha"": 10.0}",5201107409.266737,6364,25458
+b_lr,28,rf,RF,Random Forest Regressor,MSE,4134467644.0213513,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4793013126.67832,6364,25458
+b_lr,29,dt,DT,Decision Tree Regressor,MSE,4398376996.907815,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4491111786.605863,6364,25458
+b_lr,29,gb,GB,Histogram Gradient Boosting Regressor,MSE,4067090819.8230715,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3831933736.085277,6364,25458
+b_lr,29,lin,LIN,Ridge Regression,MSE,4486270826.45895,"{""model__alpha"": 10.0}",4505106112.987688,6364,25458
+b_lr,29,rf,RF,Random Forest Regressor,MSE,4115233585.874558,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4063479221.487726,6364,25458
+b_lr,30,dt,DT,Decision Tree Regressor,MSE,4652185321.705878,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4329206321.663358,6364,25458
+b_lr,30,gb,GB,Histogram Gradient Boosting Regressor,MSE,4291002724.767868,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4015796156.234105,6364,25458
+b_lr,30,lin,LIN,Ridge Regression,MSE,4669174953.897962,"{""model__alpha"": 10.0}",4327073081.490199,6364,25458
+b_lr,30,rf,RF,Random Forest Regressor,MSE,4354478300.174414,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4163108313.4618287,6364,25458
+b_lr,31,dt,DT,Decision Tree Regressor,MSE,4343713073.288669,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3690867472.747388,6364,25458
+b_lr,31,gb,GB,Histogram Gradient Boosting Regressor,MSE,4032528630.9479904,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3331897066.589789,6364,25458
+b_lr,31,lin,LIN,Ridge Regression,MSE,4442118614.79392,"{""model__alpha"": 10.0}",3596910508.937705,6364,25458
+b_lr,31,rf,RF,Random Forest Regressor,MSE,4102227459.8649244,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3398750698.7935815,6364,25458
+b_lr,32,dt,DT,Decision Tree Regressor,MSE,3965338829.680417,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3904938225.2550564,6364,25458
+b_lr,32,gb,GB,Histogram Gradient Boosting Regressor,MSE,3708125414.129289,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3927447125.2441363,6364,25458
+b_lr,32,lin,LIN,Ridge Regression,MSE,4026282568.537559,"{""model__alpha"": 10.0}",4255509491.144572,6364,25458
+b_lr,32,rf,RF,Random Forest Regressor,MSE,3710805506.879543,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3688736613.143469,6364,25458
+b_lr,33,dt,DT,Decision Tree Regressor,MSE,4001789587.3488054,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4077672663.9821873,6364,25458
+b_lr,33,gb,GB,Histogram Gradient Boosting Regressor,MSE,3708720391.1284037,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3713130354.916231,6364,25458
+b_lr,33,lin,LIN,Ridge Regression,MSE,4113049019.4742947,"{""model__alpha"": 10.0}",4188167446.4250975,6364,25458
+b_lr,33,rf,RF,Random Forest Regressor,MSE,3743306839.2584777,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3774567697.363033,6364,25458
+b_lr,34,dt,DT,Decision Tree Regressor,MSE,4094181775.438348,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5071680741.499601,6364,25458
+b_lr,34,gb,GB,Histogram Gradient Boosting Regressor,MSE,3695861181.5295424,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4711028481.515393,6364,25458
+b_lr,34,lin,LIN,Ridge Regression,MSE,4063406918.209486,"{""model__alpha"": 10.0}",5073261415.1611805,6364,25458
+b_lr,34,rf,RF,Random Forest Regressor,MSE,3761629582.6706314,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4511813889.4476385,6364,25458
+b_lr,35,dt,DT,Decision Tree Regressor,MSE,4267476538.723061,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5608150075.551736,6364,25458
+b_lr,35,gb,GB,Histogram Gradient Boosting Regressor,MSE,3922943801.636912,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5221136974.589416,6364,25458
+b_lr,35,lin,LIN,Ridge Regression,MSE,4273251053.3260984,"{""model__alpha"": 10.0}",5555091536.444944,6364,25458
+b_lr,35,rf,RF,Random Forest Regressor,MSE,3943451532.1881824,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5279133611.654759,6364,25458
+b_lr,36,dt,DT,Decision Tree Regressor,MSE,4371924370.55485,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4040447615.7678556,6364,25458
+b_lr,36,gb,GB,Histogram Gradient Boosting Regressor,MSE,4112584505.6261587,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3811556646.085186,6364,25458
+b_lr,36,lin,LIN,Ridge Regression,MSE,4478359321.422991,"{""model__alpha"": 10.0}",4110281278.5480285,6364,25458
+b_lr,36,rf,RF,Random Forest Regressor,MSE,4118873715.2135615,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3636433682.8634667,6364,25458
+b_lr,37,dt,DT,Decision Tree Regressor,MSE,4328581282.734696,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5301046288.038835,6364,25458
+b_lr,37,gb,GB,Histogram Gradient Boosting Regressor,MSE,3958809270.0379643,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5015922424.063765,6364,25458
+b_lr,37,lin,LIN,Ridge Regression,MSE,4364192445.528387,"{""model__alpha"": 10.0}",5625581409.81599,6364,25458
+b_lr,37,rf,RF,Random Forest Regressor,MSE,4050367306.515169,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5178763232.173806,6364,25458
+b_lr,38,dt,DT,Decision Tree Regressor,MSE,4461529440.136747,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3256318388.988108,6364,25458
+b_lr,38,gb,GB,Histogram Gradient Boosting Regressor,MSE,4001051338.9229217,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3250945750.8500156,6364,25458
+b_lr,38,lin,LIN,Ridge Regression,MSE,4472686832.823702,"{""model__alpha"": 10.0}",3356765668.115087,6364,25458
+b_lr,38,rf,RF,Random Forest Regressor,MSE,4129059320.0358515,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3118971994.31269,6364,25458
+b_lr,39,dt,DT,Decision Tree Regressor,MSE,4561548834.471103,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4214682867.862068,6364,25458
+b_lr,39,gb,GB,Histogram Gradient Boosting Regressor,MSE,4293794738.7481318,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4172859717.115604,6364,25458
+b_lr,39,lin,LIN,Ridge Regression,MSE,4531938700.287522,"{""model__alpha"": 10.0}",4402918602.176388,6364,25458
+b_lr,39,rf,RF,Random Forest Regressor,MSE,4235550056.4649534,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3998834940.7050033,6364,25458
+b_lr,40,dt,DT,Decision Tree Regressor,MSE,4822980800.283443,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",4662125706.096561,6364,25458
+b_lr,40,gb,GB,Histogram Gradient Boosting Regressor,MSE,4325871922.605523,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4234285773.061746,6364,25458
+b_lr,40,lin,LIN,Ridge Regression,MSE,4711995780.022255,"{""model__alpha"": 10.0}",4538548960.920739,6364,25458
+b_lr,40,rf,RF,Random Forest Regressor,MSE,4286222296.5753164,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4347573685.368205,6364,25458
+b_lr,41,dt,DT,Decision Tree Regressor,MSE,4374798646.738552,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",3888978806.1372805,6364,25458
+b_lr,41,gb,GB,Histogram Gradient Boosting Regressor,MSE,4038010266.6471343,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3427103609.5308805,6364,25458
+b_lr,41,lin,LIN,Ridge Regression,MSE,4407886202.15653,"{""model__alpha"": 10.0}",3631756202.087897,6364,25458
+b_lr,41,rf,RF,Random Forest Regressor,MSE,4033349846.542085,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3533354161.9550433,6364,25458
+b_lr,42,dt,DT,Decision Tree Regressor,MSE,4472525090.169766,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5049470921.240015,6364,25458
+b_lr,42,gb,GB,Histogram Gradient Boosting Regressor,MSE,4199920852.11328,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4571516164.246991,6364,25458
+b_lr,42,lin,LIN,Ridge Regression,MSE,4596531848.092745,"{""model__alpha"": 10.0}",5027104492.157327,6364,25458
+b_lr,42,rf,RF,Random Forest Regressor,MSE,4276290394.783409,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4711149075.785579,6364,25458
+b_lr,43,dt,DT,Decision Tree Regressor,MSE,4341666075.838905,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4875402983.936006,6364,25458
+b_lr,43,gb,GB,Histogram Gradient Boosting Regressor,MSE,3850501600.7013845,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4620952311.794243,6364,25458
+b_lr,43,lin,LIN,Ridge Regression,MSE,4221678033.5071235,"{""model__alpha"": 10.0}",5071749577.617209,6364,25458
+b_lr,43,rf,RF,Random Forest Regressor,MSE,3894576707.8980556,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4675466673.486797,6364,25458
+b_lr,44,dt,DT,Decision Tree Regressor,MSE,4257913431.6394916,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4366449864.551585,6364,25458
+b_lr,44,gb,GB,Histogram Gradient Boosting Regressor,MSE,3725496299.2523985,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4303396215.770696,6364,25458
+b_lr,44,lin,LIN,Ridge Regression,MSE,4084674420.34838,"{""model__alpha"": 10.0}",4808477962.466821,6364,25458
+b_lr,44,rf,RF,Random Forest Regressor,MSE,3780561679.5631986,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4437870694.411876,6364,25458
+b_lr,45,dt,DT,Decision Tree Regressor,MSE,4437407026.805612,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4305279374.267259,6364,25458
+b_lr,45,gb,GB,Histogram Gradient Boosting Regressor,MSE,4164411856.1266093,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4054572049.364568,6364,25458
+b_lr,45,lin,LIN,Ridge Regression,MSE,4454517554.603088,"{""model__alpha"": 10.0}",4385455449.205458,6364,25458
+b_lr,45,rf,RF,Random Forest Regressor,MSE,4124419084.3564773,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3921818107.762619,6364,25458
+b_lr,46,dt,DT,Decision Tree Regressor,MSE,4443918770.439437,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4720664788.790438,6364,25458
+b_lr,46,gb,GB,Histogram Gradient Boosting Regressor,MSE,4133441896.3198514,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4324974322.683672,6364,25458
+b_lr,46,lin,LIN,Ridge Regression,MSE,4563198226.916107,"{""model__alpha"": 10.0}",4645268817.624406,6364,25458
+b_lr,46,rf,RF,Random Forest Regressor,MSE,4185683504.683597,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4349263473.855725,6364,25458
+b_lr,47,dt,DT,Decision Tree Regressor,MSE,4366349932.570335,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4607503895.481794,6364,25458
+b_lr,47,gb,GB,Histogram Gradient Boosting Regressor,MSE,4062339112.1263847,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4118701366.4454384,6364,25458
+b_lr,47,lin,LIN,Ridge Regression,MSE,4394549960.296321,"{""model__alpha"": 10.0}",4848031044.780493,6364,25458
+b_lr,47,rf,RF,Random Forest Regressor,MSE,4067501752.8022575,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4276219656.0216656,6364,25458
+b_lr,48,dt,DT,Decision Tree Regressor,MSE,4162320179.6145644,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5099003383.5397835,6364,25458
+b_lr,48,gb,GB,Histogram Gradient Boosting Regressor,MSE,3889297328.323427,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4782045709.116127,6364,25458
+b_lr,48,lin,LIN,Ridge Regression,MSE,4266361403.2752333,"{""model__alpha"": 10.0}",5182549538.591877,6364,25458
+b_lr,48,rf,RF,Random Forest Regressor,MSE,3923197353.657391,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4905244125.031139,6364,25458
+b_lr,49,dt,DT,Decision Tree Regressor,MSE,4266784626.219784,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4112032779.318665,6364,25458
+b_lr,49,gb,GB,Histogram Gradient Boosting Regressor,MSE,3970627986.895309,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3593573601.653906,6364,25458
+b_lr,49,lin,LIN,Ridge Regression,MSE,4333095603.536018,"{""model__alpha"": 10.0}",3904434461.9947047,6364,25458
+b_lr,49,rf,RF,Random Forest Regressor,MSE,3992240088.840045,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3614834089.730163,6364,25458
+b_lr,50,dt,DT,Decision Tree Regressor,MSE,4437014255.351324,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4059882353.8513293,6364,25458
+b_lr,50,gb,GB,Histogram Gradient Boosting Regressor,MSE,4061355574.7947736,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3785979474.4602237,6364,25458
+b_lr,50,lin,LIN,Ridge Regression,MSE,4469985085.5178385,"{""model__alpha"": 10.0}",4237718442.727301,6364,25458
+b_lr,50,rf,RF,Random Forest Regressor,MSE,4158201994.557457,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3879225007.9682612,6364,25458
+b_lr,51,dt,DT,Decision Tree Regressor,MSE,4384095985.426079,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5617792265.080664,6364,25458
+b_lr,51,gb,GB,Histogram Gradient Boosting Regressor,MSE,4093657835.649255,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5227329758.46704,6364,25458
+b_lr,51,lin,LIN,Ridge Regression,MSE,4459654419.282884,"{""model__alpha"": 10.0}",5613876933.191574,6364,25458
+b_lr,51,rf,RF,Random Forest Regressor,MSE,4123968518.1143746,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5376002209.085621,6364,25458
+b_lr,52,dt,DT,Decision Tree Regressor,MSE,4499992445.268364,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4195494021.270301,6364,25458
+b_lr,52,gb,GB,Histogram Gradient Boosting Regressor,MSE,4183463770.6507206,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3722786840.530383,6364,25458
+b_lr,52,lin,LIN,Ridge Regression,MSE,4656282985.28101,"{""model__alpha"": 10.0}",4334113421.517286,6364,25458
+b_lr,52,rf,RF,Random Forest Regressor,MSE,4261783828.4210305,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3882826772.537873,6364,25458
+b_lr,53,dt,DT,Decision Tree Regressor,MSE,4810958226.82527,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3540857098.1438713,6364,25458
+b_lr,53,gb,GB,Histogram Gradient Boosting Regressor,MSE,4503229167.803419,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3368005541.719673,6364,25458
+b_lr,53,lin,LIN,Ridge Regression,MSE,4941310972.991293,"{""model__alpha"": 10.0}",3552625193.4746866,6364,25458
+b_lr,53,rf,RF,Random Forest Regressor,MSE,4575358219.768188,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3307407260.686628,6364,25458
+b_lr,54,dt,DT,Decision Tree Regressor,MSE,4209125196.263382,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5441505656.668302,6364,25458
+b_lr,54,gb,GB,Histogram Gradient Boosting Regressor,MSE,3895227626.431588,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5016005008.210456,6364,25458
+b_lr,54,lin,LIN,Ridge Regression,MSE,4281951656.579857,"{""model__alpha"": 10.0}",5388206197.820977,6364,25458
+b_lr,54,rf,RF,Random Forest Regressor,MSE,3955381219.563763,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5005598574.607011,6364,25458
+b_lr,55,dt,DT,Decision Tree Regressor,MSE,4461288378.280354,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5324300000.406467,6364,25458
+b_lr,55,gb,GB,Histogram Gradient Boosting Regressor,MSE,4237404983.2584796,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",5153127412.2209,6364,25458
+b_lr,55,lin,LIN,Ridge Regression,MSE,4474551281.598474,"{""model__alpha"": 10.0}",5529831449.024437,6364,25458
+b_lr,55,rf,RF,Random Forest Regressor,MSE,4114119894.468232,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5236135168.5636015,6364,25458
+b_lr,56,dt,DT,Decision Tree Regressor,MSE,4347892969.61721,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",5334351386.257359,6364,25458
+b_lr,56,gb,GB,Histogram Gradient Boosting Regressor,MSE,4021040692.2828975,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4974400835.241674,6364,25458
+b_lr,56,lin,LIN,Ridge Regression,MSE,4321197438.810304,"{""model__alpha"": 10.0}",5499194362.24811,6364,25458
+b_lr,56,rf,RF,Random Forest Regressor,MSE,3993469652.5896463,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5067108018.199354,6364,25458
+b_lr,57,dt,DT,Decision Tree Regressor,MSE,4389830906.083724,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4898685738.680448,6364,25458
+b_lr,57,gb,GB,Histogram Gradient Boosting Regressor,MSE,4124589662.729577,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4439159988.420316,6364,25458
+b_lr,57,lin,LIN,Ridge Regression,MSE,4550062892.430087,"{""model__alpha"": 10.0}",4849902469.193596,6364,25458
+b_lr,57,rf,RF,Random Forest Regressor,MSE,4166632889.7511344,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4427388502.856182,6364,25458
+b_lr,58,dt,DT,Decision Tree Regressor,MSE,4481650589.901281,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",3266944772.6385484,6364,25458
+b_lr,58,gb,GB,Histogram Gradient Boosting Regressor,MSE,4060886653.522167,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",2960276708.7829356,6364,25458
+b_lr,58,lin,LIN,Ridge Regression,MSE,4537545791.948447,"{""model__alpha"": 10.0}",3246695069.9606824,6364,25458
+b_lr,58,rf,RF,Random Forest Regressor,MSE,4156573301.9374785,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3008069903.0692744,6364,25458
+b_lr,59,dt,DT,Decision Tree Regressor,MSE,4297799128.355091,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3860245857.6695323,6364,25458
+b_lr,59,gb,GB,Histogram Gradient Boosting Regressor,MSE,4040493124.9274554,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3338285712.4505525,6364,25458
+b_lr,59,lin,LIN,Ridge Regression,MSE,4346666843.624324,"{""model__alpha"": 10.0}",3790481855.4815907,6364,25458
+b_lr,59,rf,RF,Random Forest Regressor,MSE,4043160193.1696944,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3494030874.1730676,6364,25458
+b_lr,60,dt,DT,Decision Tree Regressor,MSE,4769364466.789726,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3692082421.8690658,6364,25458
+b_lr,60,gb,GB,Histogram Gradient Boosting Regressor,MSE,4504545693.917612,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3313663444.1467557,6364,25458
+b_lr,60,lin,LIN,Ridge Regression,MSE,4903561994.802751,"{""model__alpha"": 10.0}",3842716293.5215955,6364,25458
+b_lr,60,rf,RF,Random Forest Regressor,MSE,4498738267.3675375,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3491746932.3520412,6364,25458
+b_lr,61,dt,DT,Decision Tree Regressor,MSE,4367641681.647306,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4359039573.414814,6364,25458
+b_lr,61,gb,GB,Histogram Gradient Boosting Regressor,MSE,4173212986.003571,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3975058572.2691107,6364,25458
+b_lr,61,lin,LIN,Ridge Regression,MSE,4487330824.866708,"{""model__alpha"": 10.0}",4245193953.7066813,6364,25458
+b_lr,61,rf,RF,Random Forest Regressor,MSE,4199774671.868383,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3948979071.347365,6364,25458
+b_lr,62,dt,DT,Decision Tree Regressor,MSE,4095920680.255327,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4988113318.765309,6364,25458
+b_lr,62,gb,GB,Histogram Gradient Boosting Regressor,MSE,3761507906.201033,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4677535694.452029,6364,25458
+b_lr,62,lin,LIN,Ridge Regression,MSE,4137687862.0632133,"{""model__alpha"": 10.0}",4560309944.501645,6364,25458
+b_lr,62,rf,RF,Random Forest Regressor,MSE,3813409235.116649,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4483742360.079217,6364,25458
+b_lr,63,dt,DT,Decision Tree Regressor,MSE,4421278974.584436,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5541424695.72826,6364,25458
+b_lr,63,gb,GB,Histogram Gradient Boosting Regressor,MSE,4073146588.2914066,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4910315358.444998,6364,25458
+b_lr,63,lin,LIN,Ridge Regression,MSE,4404574301.662803,"{""model__alpha"": 10.0}",5697206339.132042,6364,25458
+b_lr,63,rf,RF,Random Forest Regressor,MSE,4103168460.1566753,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5212032477.030283,6364,25458
+b_lr,64,dt,DT,Decision Tree Regressor,MSE,4428239062.5086155,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4111631967.9419527,6364,25458
+b_lr,64,gb,GB,Histogram Gradient Boosting Regressor,MSE,4028270541.136947,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3947691036.7791853,6364,25458
+b_lr,64,lin,LIN,Ridge Regression,MSE,4414143736.629629,"{""model__alpha"": 10.0}",3939922212.505561,6364,25458
+b_lr,64,rf,RF,Random Forest Regressor,MSE,4118181417.9944983,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3801293081.2147975,6364,25458
+b_lr,65,dt,DT,Decision Tree Regressor,MSE,4440578433.851541,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4964176204.101882,6364,25458
+b_lr,65,gb,GB,Histogram Gradient Boosting Regressor,MSE,3931203023.758758,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4712380824.716985,6364,25458
+b_lr,65,lin,LIN,Ridge Regression,MSE,4202956327.5880585,"{""model__alpha"": 10.0}",5097603412.060697,6364,25458
+b_lr,65,rf,RF,Random Forest Regressor,MSE,3872385019.502514,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4629258699.515182,6364,25458
+b_lr,66,dt,DT,Decision Tree Regressor,MSE,4493301336.865557,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4336331210.961104,6364,25458
+b_lr,66,gb,GB,Histogram Gradient Boosting Regressor,MSE,4067988244.3437195,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3884778293.777185,6364,25458
+b_lr,66,lin,LIN,Ridge Regression,MSE,4534771601.9730425,"{""model__alpha"": 10.0}",4396921819.231786,6364,25458
+b_lr,66,rf,RF,Random Forest Regressor,MSE,4176959663.6112027,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4202449496.413641,6364,25458
+b_lr,67,dt,DT,Decision Tree Regressor,MSE,4195018747.900127,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3165810528.726815,6364,25458
+b_lr,67,gb,GB,Histogram Gradient Boosting Regressor,MSE,3852575632.71278,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",2780934856.4467416,6364,25458
+b_lr,67,lin,LIN,Ridge Regression,MSE,4197586844.8981495,"{""model__alpha"": 10.0}",3232135946.4635215,6364,25458
+b_lr,67,rf,RF,Random Forest Regressor,MSE,3922475566.097918,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",2826370379.648768,6364,25458
+b_lr,68,dt,DT,Decision Tree Regressor,MSE,4582015356.639493,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4229857627.930237,6364,25458
+b_lr,68,gb,GB,Histogram Gradient Boosting Regressor,MSE,4338971127.070113,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3875732010.269322,6364,25458
+b_lr,68,lin,LIN,Ridge Regression,MSE,4669504606.881488,"{""model__alpha"": 10.0}",4340409544.214679,6364,25458
+b_lr,68,rf,RF,Random Forest Regressor,MSE,4227138976.97191,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4079240885.825185,6364,25458
+b_lr,69,dt,DT,Decision Tree Regressor,MSE,4463596709.749677,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4779725117.962907,6364,25458
+b_lr,69,gb,GB,Histogram Gradient Boosting Regressor,MSE,4091222284.6044073,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4405329086.81316,6364,25458
+b_lr,69,lin,LIN,Ridge Regression,MSE,4495357212.636024,"{""model__alpha"": 10.0}",4691862670.4976635,6364,25458
+b_lr,69,rf,RF,Random Forest Regressor,MSE,4164679832.8438873,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4483865822.198803,6364,25458
+b_lr,70,dt,DT,Decision Tree Regressor,MSE,4790327427.857394,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",3779168801.709758,6364,25458
+b_lr,70,gb,GB,Histogram Gradient Boosting Regressor,MSE,4241787350.7068872,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3436415457.8626566,6364,25458
+b_lr,70,lin,LIN,Ridge Regression,MSE,4590364669.8021965,"{""model__alpha"": 10.0}",3568910970.6076016,6364,25458
+b_lr,70,rf,RF,Random Forest Regressor,MSE,4260585824.4567633,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3497859986.595173,6364,25458
+b_lr,71,dt,DT,Decision Tree Regressor,MSE,4326050634.765094,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4322544185.611395,6364,25458
+b_lr,71,gb,GB,Histogram Gradient Boosting Regressor,MSE,4001801935.2275314,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3685738657.7166853,6364,25458
+b_lr,71,lin,LIN,Ridge Regression,MSE,4241529777.640493,"{""model__alpha"": 10.0}",3888414839.867228,6364,25458
+b_lr,71,rf,RF,Random Forest Regressor,MSE,4013213266.4990807,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3878299872.2220836,6364,25458
+b_lr,72,dt,DT,Decision Tree Regressor,MSE,4313450346.928025,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3421703994.387717,6364,25458
+b_lr,72,gb,GB,Histogram Gradient Boosting Regressor,MSE,3947434383.1348004,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3267133261.3049464,6364,25458
+b_lr,72,lin,LIN,Ridge Regression,MSE,4359013219.725215,"{""model__alpha"": 10.0}",3479662419.16642,6364,25458
+b_lr,72,rf,RF,Random Forest Regressor,MSE,4035736377.645293,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3251474065.16693,6364,25458
+b_lr,73,dt,DT,Decision Tree Regressor,MSE,4213650860.426955,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4814157422.691986,6364,25458
+b_lr,73,gb,GB,Histogram Gradient Boosting Regressor,MSE,3973735225.988325,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4611751348.233996,6364,25458
+b_lr,73,lin,LIN,Ridge Regression,MSE,4367945462.04417,"{""model__alpha"": 10.0}",4993346789.131786,6364,25458
+b_lr,73,rf,RF,Random Forest Regressor,MSE,3955589577.9534755,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4573501128.412083,6364,25458
+b_lr,74,dt,DT,Decision Tree Regressor,MSE,4537695950.762212,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3303801548.3442907,6364,25458
+b_lr,74,gb,GB,Histogram Gradient Boosting Regressor,MSE,4178739284.038362,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3115405049.5953655,6364,25458
+b_lr,74,lin,LIN,Ridge Regression,MSE,4666902202.764659,"{""model__alpha"": 10.0}",3617335441.5432954,6364,25458
+b_lr,74,rf,RF,Random Forest Regressor,MSE,4305065136.215832,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3193673462.774994,6364,25458
+b_lr,75,dt,DT,Decision Tree Regressor,MSE,4319083366.959762,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5025014093.572333,6364,25458
+b_lr,75,gb,GB,Histogram Gradient Boosting Regressor,MSE,4100459157.427443,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",4729115275.612733,6364,25458
+b_lr,75,lin,LIN,Ridge Regression,MSE,4477022952.145071,"{""model__alpha"": 10.0}",5011842873.788178,6364,25458
+b_lr,75,rf,RF,Random Forest Regressor,MSE,4139985792.60383,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4698351920.342631,6364,25458
+b_lr,76,dt,DT,Decision Tree Regressor,MSE,4321864420.803129,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4379109120.457311,6364,25458
+b_lr,76,gb,GB,Histogram Gradient Boosting Regressor,MSE,3730178925.5082135,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4029615752.8318563,6364,25458
+b_lr,76,lin,LIN,Ridge Regression,MSE,4242877929.606975,"{""model__alpha"": 10.0}",4678956229.595985,6364,25458
+b_lr,76,rf,RF,Random Forest Regressor,MSE,3885298097.8018956,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4101970773.1934233,6364,25458
+b_lr,77,dt,DT,Decision Tree Regressor,MSE,4576272556.254845,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3835807966.4299073,6364,25458
+b_lr,77,gb,GB,Histogram Gradient Boosting Regressor,MSE,4272716159.2827587,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3573069407.643561,6364,25458
+b_lr,77,lin,LIN,Ridge Regression,MSE,4611666334.074553,"{""model__alpha"": 10.0}",4014534341.263372,6364,25458
+b_lr,77,rf,RF,Random Forest Regressor,MSE,4364236902.694677,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3576026495.3177614,6364,25458
+b_lr,78,dt,DT,Decision Tree Regressor,MSE,4654174298.191064,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4358653258.564916,6364,25458
+b_lr,78,gb,GB,Histogram Gradient Boosting Regressor,MSE,4316279613.757835,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3978535325.277818,6364,25458
+b_lr,78,lin,LIN,Ridge Regression,MSE,4776119542.891562,"{""model__alpha"": 10.0}",4554807632.718213,6364,25458
+b_lr,78,rf,RF,Random Forest Regressor,MSE,4380797604.335327,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4006715961.6286106,6364,25458
+b_lr,79,dt,DT,Decision Tree Regressor,MSE,4541163809.262888,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5211173095.738062,6364,25458
+b_lr,79,gb,GB,Histogram Gradient Boosting Regressor,MSE,4225799061.509975,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4852223046.239317,6364,25458
+b_lr,79,lin,LIN,Ridge Regression,MSE,4621215201.493201,"{""model__alpha"": 10.0}",5058409999.513562,6364,25458
+b_lr,79,rf,RF,Random Forest Regressor,MSE,4258512930.6844554,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4844017819.403143,6364,25458
+b_lr,80,dt,DT,Decision Tree Regressor,MSE,4665316386.589538,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3711693466.4089594,6364,25458
+b_lr,80,gb,GB,Histogram Gradient Boosting Regressor,MSE,4296153396.57346,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3425658210.4867883,6364,25458
+b_lr,80,lin,LIN,Ridge Regression,MSE,4737784442.733895,"{""model__alpha"": 10.0}",3620048734.722005,6364,25458
+b_lr,80,rf,RF,Random Forest Regressor,MSE,4392312426.294775,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3450242547.116667,6364,25458
+b_lr,81,dt,DT,Decision Tree Regressor,MSE,4515331946.620764,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",3542380046.3097777,6364,25458
+b_lr,81,gb,GB,Histogram Gradient Boosting Regressor,MSE,3998309478.6848087,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3135497130.8028865,6364,25458
+b_lr,81,lin,LIN,Ridge Regression,MSE,4523833158.266809,"{""model__alpha"": 10.0}",3681426894.316107,6364,25458
+b_lr,81,rf,RF,Random Forest Regressor,MSE,4097702777.410544,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3259609928.8205533,6364,25458
+b_lr,82,dt,DT,Decision Tree Regressor,MSE,4280791091.975764,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4683535175.993685,6364,25458
+b_lr,82,gb,GB,Histogram Gradient Boosting Regressor,MSE,3986206867.053698,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4489496464.092496,6364,25458
+b_lr,82,lin,LIN,Ridge Regression,MSE,4413406423.066689,"{""model__alpha"": 10.0}",5105282393.7967205,6364,25458
+b_lr,82,rf,RF,Random Forest Regressor,MSE,4057156064.3316703,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4489977320.851581,6364,25458
+b_lr,83,dt,DT,Decision Tree Regressor,MSE,4311362988.214666,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4522004867.706884,6364,25458
+b_lr,83,gb,GB,Histogram Gradient Boosting Regressor,MSE,3892306364.904357,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4178570472.787631,6364,25458
+b_lr,83,lin,LIN,Ridge Regression,MSE,4335183201.084703,"{""model__alpha"": 10.0}",4389161958.8380165,6364,25458
+b_lr,83,rf,RF,Random Forest Regressor,MSE,4012361185.6454196,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4178563618.260184,6364,25458
+b_lr,84,dt,DT,Decision Tree Regressor,MSE,4327969524.677299,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4417967771.902751,6364,25458
+b_lr,84,gb,GB,Histogram Gradient Boosting Regressor,MSE,3980186367.675729,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4153735917.0118513,6364,25458
+b_lr,84,lin,LIN,Ridge Regression,MSE,4378216382.928811,"{""model__alpha"": 10.0}",4475463138.930791,6364,25458
+b_lr,84,rf,RF,Random Forest Regressor,MSE,4056148169.541689,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4120444314.582731,6364,25458
+b_lr,85,dt,DT,Decision Tree Regressor,MSE,4616440120.69498,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4470611827.64245,6364,25458
+b_lr,85,gb,GB,Histogram Gradient Boosting Regressor,MSE,4273598893.70114,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4197658296.5864177,6364,25458
+b_lr,85,lin,LIN,Ridge Regression,MSE,4598381610.221127,"{""model__alpha"": 10.0}",4650288482.051817,6364,25458
+b_lr,85,rf,RF,Random Forest Regressor,MSE,4244155557.4942884,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4265029434.3706627,6364,25458
+b_lr,86,dt,DT,Decision Tree Regressor,MSE,4655637715.74414,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",2881160465.1647434,6364,25458
+b_lr,86,gb,GB,Histogram Gradient Boosting Regressor,MSE,4322873262.794188,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",2554104417.277054,6364,25458
+b_lr,86,lin,LIN,Ridge Regression,MSE,4734605792.830031,"{""model__alpha"": 10.0}",2928992620.2404985,6364,25458
+b_lr,86,rf,RF,Random Forest Regressor,MSE,4387258737.360427,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",2579005669.188347,6364,25458
+b_lr,87,dt,DT,Decision Tree Regressor,MSE,4279682971.4898806,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3916738170.3421907,6364,25458
+b_lr,87,gb,GB,Histogram Gradient Boosting Regressor,MSE,3961903591.975219,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3543421406.201422,6364,25458
+b_lr,87,lin,LIN,Ridge Regression,MSE,4337798925.227836,"{""model__alpha"": 10.0}",3975107582.1710987,6364,25458
+b_lr,87,rf,RF,Random Forest Regressor,MSE,4027658579.2259765,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3599202190.482853,6364,25458
+b_lr,88,dt,DT,Decision Tree Regressor,MSE,4497655477.15179,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3670094273.602698,6364,25458
+b_lr,88,gb,GB,Histogram Gradient Boosting Regressor,MSE,4186544579.7323728,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3461392023.9097967,6364,25458
+b_lr,88,lin,LIN,Ridge Regression,MSE,4592868429.94987,"{""model__alpha"": 10.0}",3759833277.6008844,6364,25458
+b_lr,88,rf,RF,Random Forest Regressor,MSE,4242564665.4761176,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3508941909.1298685,6364,25458
+b_lr,89,dt,DT,Decision Tree Regressor,MSE,4154082088.9324636,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3995010757.5645943,6364,25458
+b_lr,89,gb,GB,Histogram Gradient Boosting Regressor,MSE,3953687586.16179,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3758942362.335239,6364,25458
+b_lr,89,lin,LIN,Ridge Regression,MSE,4291142657.4422174,"{""model__alpha"": 10.0}",3949337603.174445,6364,25458
+b_lr,89,rf,RF,Random Forest Regressor,MSE,4002380070.9971757,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3734108064.5137568,6364,25458
+b_lr,90,dt,DT,Decision Tree Regressor,MSE,4592345173.292846,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4296676842.080439,6364,25458
+b_lr,90,gb,GB,Histogram Gradient Boosting Regressor,MSE,4182011239.242961,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3922404200.26048,6364,25458
+b_lr,90,lin,LIN,Ridge Regression,MSE,4573024508.928017,"{""model__alpha"": 10.0}",4461384663.640828,6364,25458
+b_lr,90,rf,RF,Random Forest Regressor,MSE,4261270795.692882,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4051290291.9100523,6364,25458
+b_lr,91,dt,DT,Decision Tree Regressor,MSE,4617603167.866299,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3997865753.1376295,6364,25458
+b_lr,91,gb,GB,Histogram Gradient Boosting Regressor,MSE,4363113871.343616,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3562892049.96899,6364,25458
+b_lr,91,lin,LIN,Ridge Regression,MSE,4756700074.591095,"{""model__alpha"": 10.0}",3857486354.0385704,6364,25458
+b_lr,91,rf,RF,Random Forest Regressor,MSE,4436857567.848008,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3685131549.656706,6364,25458
+b_lr,92,dt,DT,Decision Tree Regressor,MSE,4672768666.390631,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5371219177.280513,6364,25458
+b_lr,92,gb,GB,Histogram Gradient Boosting Regressor,MSE,4290473647.0060024,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5012178173.980209,6364,25458
+b_lr,92,lin,LIN,Ridge Regression,MSE,4657085990.379922,"{""model__alpha"": 10.0}",5390728462.167638,6364,25458
+b_lr,92,rf,RF,Random Forest Regressor,MSE,4355302008.371235,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5076340841.682266,6364,25458
+b_lr,93,dt,DT,Decision Tree Regressor,MSE,4489893514.687843,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4024098066.4003415,6364,25458
+b_lr,93,gb,GB,Histogram Gradient Boosting Regressor,MSE,4216594361.241055,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3518145975.1735563,6364,25458
+b_lr,93,lin,LIN,Ridge Regression,MSE,4664989894.281628,"{""model__alpha"": 10.0}",4103118878.0225782,6364,25458
+b_lr,93,rf,RF,Random Forest Regressor,MSE,4300696685.545611,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3744075971.481079,6364,25458
+b_lr,94,dt,DT,Decision Tree Regressor,MSE,4444900806.541056,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4505563056.392009,6364,25458
+b_lr,94,gb,GB,Histogram Gradient Boosting Regressor,MSE,4170185646.7433586,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4202739369.203327,6364,25458
+b_lr,94,lin,LIN,Ridge Regression,MSE,4443258278.387459,"{""model__alpha"": 10.0}",4483964459.10864,6364,25458
+b_lr,94,rf,RF,Random Forest Regressor,MSE,4159382194.064313,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4199958398.148301,6364,25458
+b_lr,95,dt,DT,Decision Tree Regressor,MSE,4683371705.093546,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",3617002657.352358,6364,25458
+b_lr,95,gb,GB,Histogram Gradient Boosting Regressor,MSE,4299628158.49726,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3289927232.2123456,6364,25458
+b_lr,95,lin,LIN,Ridge Regression,MSE,4644058624.709893,"{""model__alpha"": 10.0}",3541672693.593728,6364,25458
+b_lr,95,rf,RF,Random Forest Regressor,MSE,4320482874.292692,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3305666637.1566963,6364,25458
+b_lr,96,dt,DT,Decision Tree Regressor,MSE,4562479546.62475,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",3734068471.2921968,6364,25458
+b_lr,96,gb,GB,Histogram Gradient Boosting Regressor,MSE,4239921914.4718385,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3320404950.7274146,6364,25458
+b_lr,96,lin,LIN,Ridge Regression,MSE,4618184778.070698,"{""model__alpha"": 10.0}",3843518549.9861145,6364,25458
+b_lr,96,rf,RF,Random Forest Regressor,MSE,4253057449.3777394,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3554687921.477751,6364,25458
+b_lr,97,dt,DT,Decision Tree Regressor,MSE,4468239266.491178,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",5518617718.004984,6364,25458
+b_lr,97,gb,GB,Histogram Gradient Boosting Regressor,MSE,4126239752.6753364,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",5106983474.266122,6364,25458
+b_lr,97,lin,LIN,Ridge Regression,MSE,4568449748.550831,"{""model__alpha"": 10.0}",5647486481.955757,6364,25458
+b_lr,97,rf,RF,Random Forest Regressor,MSE,4194225651.8300567,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",5307527649.445353,6364,25458
+b_lr,98,dt,DT,Decision Tree Regressor,MSE,4507129869.212543,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4211125162.8067474,6364,25458
+b_lr,98,gb,GB,Histogram Gradient Boosting Regressor,MSE,3988249399.753789,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",3885189253.4512143,6364,25458
+b_lr,98,lin,LIN,Ridge Regression,MSE,4488138057.4903345,"{""model__alpha"": 10.0}",4103756569.434583,6364,25458
+b_lr,98,rf,RF,Random Forest Regressor,MSE,4119100201.0037575,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",3965044971.8884683,6364,25458
+b_lr,99,dt,DT,Decision Tree Regressor,MSE,4264332135.2037816,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",4459313616.631163,6364,25458
+b_lr,99,gb,GB,Histogram Gradient Boosting Regressor,MSE,3959868828.5112453,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",4295795800.962921,6364,25458
+b_lr,99,lin,LIN,Ridge Regression,MSE,4411122373.691703,"{""model__alpha"": 10.0}",4608558580.578496,6364,25458
+b_lr,99,rf,RF,Random Forest Regressor,MSE,4065003152.776062,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",4237648674.8866587,6364,25458

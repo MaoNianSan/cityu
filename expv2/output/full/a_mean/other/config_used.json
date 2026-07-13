@@ -1,0 +1,138 @@
+{
+  "mode": "full",
+  "replicates": 100,
+  "worker": 4,
+  "parallel_stage": "learner fitting and prediction only",
+  "inference_stage": "serial",
+  "random_seed": 20260709,
+  "labelled_ratio": 0.1,
+  "ppi_train_ratio": 0.2,
+  "crossppi_k": 5,
+  "confidence_levels": [
+    0.9,
+    0.95,
+    0.975
+  ],
+  "lambda_grid": [
+    0.0,
+    0.025,
+    0.05,
+    0.075,
+    0.1,
+    0.125,
+    0.15,
+    0.175,
+    0.2,
+    0.225,
+    0.25,
+    0.275,
+    0.3,
+    0.325,
+    0.35,
+    0.375,
+    0.4,
+    0.425,
+    0.45,
+    0.475,
+    0.5,
+    0.525,
+    0.55,
+    0.575,
+    0.6,
+    0.625,
+    0.65,
+    0.675,
+    0.7,
+    0.725,
+    0.75,
+    0.775,
+    0.8,
+    0.825,
+    0.85,
+    0.875,
+    0.9,
+    0.925,
+    0.95,
+    0.975,
+    1.0
+  ],
+  "learner_ids": [
+    "lin",
+    "dt",
+    "rf",
+    "gb"
+  ],
+  "learner_grids": {
+    "lin_binary": [
+      {
+        "model__C": 0.1
+      },
+      {
+        "model__C": 1.0
+      },
+      {
+        "model__C": 10.0
+      }
+    ],
+    "lin_continuous": [
+      {
+        "model__alpha": 0.1
+      },
+      {
+        "model__alpha": 1.0
+      },
+      {
+        "model__alpha": 10.0
+      }
+    ],
+    "dt": [
+      {
+        "model__max_depth": 4,
+        "model__min_samples_leaf": 10
+      },
+      {
+        "model__max_depth": 4,
+        "model__min_samples_leaf": 50
+      },
+      {
+        "model__max_depth": 8,
+        "model__min_samples_leaf": 10
+      },
+      {
+        "model__max_depth": 8,
+        "model__min_samples_leaf": 50
+      }
+    ],
+    "rf": [
+      {
+        "model__n_estimators": 20,
+        "model__max_depth": 8,
+        "model__min_samples_leaf": 20
+      },
+      {
+        "model__n_estimators": 20,
+        "model__max_depth": 12,
+        "model__min_samples_leaf": 20
+      }
+    ],
+    "gb": [
+      {
+        "model__max_iter": 50,
+        "model__learning_rate": 0.1,
+        "model__max_leaf_nodes": 15
+      },
+      {
+        "model__max_iter": 100,
+        "model__learning_rate": 0.1,
+        "model__max_leaf_nodes": 15
+      }
+    ]
+  },
+  "ppi_python_required": "0.2.3",
+  "ppi_python_installed": "0.2.3",
+  "source_path": "D:\\research\\PPI\\code\\20260706\\expv2\\input\\galaxy_zoo_2\\gz2_hart16.csv",
+  "n_total": 239695,
+  "truth": [
+    0.22373850101170237
+  ]
+}

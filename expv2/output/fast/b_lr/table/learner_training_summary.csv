@@ -1,0 +1,9 @@
+experiment,learner,learner_label,learner_model,tuned_params,selection_count,selection_rate,validation_score_mean,validation_score_sd,quality_metric,quality_mean,quality_sd,n_train,n_inference
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 50}",1,0.05,5235320453.341194,,MSE,4657039155.100279,,6364,25458
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",4,0.2,5024541268.342482,351097009.78091764,MSE,4598287310.163956,86893854.56605937,6364,25458
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",15,0.75,4513031875.106259,652706804.1708372,MSE,4362990512.103987,173887472.1073752,6364,25458
+b_lr,gb,GB,Histogram Gradient Boosting Regressor,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",3,0.15,4793279909.514996,188038761.304642,MSE,4150504985.523737,200954134.58791742,6364,25458
+b_lr,gb,GB,Histogram Gradient Boosting Regressor,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",17,0.85,4318070221.88652,590373808.0981426,MSE,4048277629.9990478,123249032.54208343,6364,25458
+b_lr,lin,LIN,Ridge Regression,"{""model__alpha"": 10.0}",20,1.0,4725572195.295192,600193662.7266145,MSE,4443168817.889824,143063616.30500123,6364,25458
+b_lr,rf,RF,Random Forest Regressor,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",14,0.7,4431378896.179815,598583410.0078804,MSE,4104481264.527037,147026239.8844879,6364,25458
+b_lr,rf,RF,Random Forest Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",6,0.3,4267322822.8330674,716699857.8790925,MSE,4090541009.209292,110306894.03313164,6364,25458

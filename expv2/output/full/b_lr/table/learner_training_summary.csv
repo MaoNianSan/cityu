@@ -1,0 +1,11 @@
+experiment,learner,learner_label,learner_model,tuned_params,selection_count,selection_rate,validation_score_mean,validation_score_sd,quality_metric,quality_mean,quality_sd,n_train,n_inference
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",2,0.02,4220647253.9031596,624344814.5873909,MSE,4806654114.070419,23089421.071069576,6364,25458
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 50}",1,0.01,5235320453.341194,,MSE,4657039155.100279,,6364,25458
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",15,0.15,4466498873.521315,657170415.2208465,MSE,4469183767.224636,122290768.04368924,6364,25458
+b_lr,dt,DT,Decision Tree Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",82,0.82,4421900491.229799,667254585.3535272,MSE,4404954583.680406,178467508.92480105,6364,25458
+b_lr,gb,GB,Histogram Gradient Boosting Regressor,"{""model__learning_rate"": 0.1, ""model__max_iter"": 100, ""model__max_leaf_nodes"": 15}",14,0.14,4259621285.0114827,708804347.4219869,MSE,4157366463.469026,167165322.99490634,6364,25458
+b_lr,gb,GB,Histogram Gradient Boosting Regressor,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",86,0.86,4093108238.8345914,625897669.1203309,MSE,4067112731.0772867,169424909.06162924,6364,25458
+b_lr,lin,LIN,Ridge Regression,"{""model__alpha"": 1.0}",1,0.01,4802435298.802381,,MSE,4396675893.117405,,6364,25458
+b_lr,lin,LIN,Ridge Regression,"{""model__alpha"": 10.0}",99,0.99,4478328001.635139,668642388.4309295,MSE,4465598613.071997,179904732.71377137,6364,25458
+b_lr,rf,RF,Random Forest Regressor,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",53,0.53,4189633704.9048443,629030412.798163,MSE,4132330918.837028,178264368.47875717,6364,25458
+b_lr,rf,RF,Random Forest Regressor,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",47,0.47,4115439150.8238215,673131282.6499507,MSE,4115570640.790062,155975613.9594012,6364,25458

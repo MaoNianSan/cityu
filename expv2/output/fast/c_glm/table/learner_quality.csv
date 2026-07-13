@@ -1,0 +1,81 @@
+experiment,replicate,learner,learner_label,learner_model,quality_metric,quality_value,tuned_params,validation_score,n_train,n_inference
+c_glm,0,dt,DT,Decision Tree Classifier,Brier,0.12119996958872936,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.13379036007593986,990,3963
+c_glm,0,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.11003973741010237,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.10169076486972697,990,3963
+c_glm,0,lin,LIN,Logistic Regression,Brier,0.11057139299381585,"{""model__C"": 10.0}",0.09776135289506624,990,3963
+c_glm,0,rf,RF,Random Forest Classifier,Brier,0.11539606669947106,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.12154940402421127,990,3963
+c_glm,1,dt,DT,Decision Tree Classifier,Brier,0.11392500130436116,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.1398244741487623,990,3963
+c_glm,1,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10700471178677971,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.12371333714326337,990,3963
+c_glm,1,lin,LIN,Logistic Regression,Brier,0.10855864102044885,"{""model__C"": 1.0}",0.11029236052975806,990,3963
+c_glm,1,rf,RF,Random Forest Classifier,Brier,0.11896491770759801,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.13292410505028995,990,3963
+c_glm,2,dt,DT,Decision Tree Classifier,Brier,0.12687402558543384,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 50}",0.12626957718948653,990,3963
+c_glm,2,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10569919759557309,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.12162733219564509,990,3963
+c_glm,2,lin,LIN,Logistic Regression,Brier,0.10654221706259066,"{""model__C"": 0.1}",0.11514489638173554,990,3963
+c_glm,2,rf,RF,Random Forest Classifier,Brier,0.11389089377688356,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.114741007051511,990,3963
+c_glm,3,dt,DT,Decision Tree Classifier,Brier,0.12110800787531041,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",0.12069630307771488,990,3963
+c_glm,3,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.1090135584591058,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.11450244130993549,990,3963
+c_glm,3,lin,LIN,Logistic Regression,Brier,0.10810892551569005,"{""model__C"": 0.1}",0.11182807883222376,990,3963
+c_glm,3,rf,RF,Random Forest Classifier,Brier,0.10952903627349393,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11683458545416966,990,3963
+c_glm,4,dt,DT,Decision Tree Classifier,Brier,0.11198727346507563,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.12467483175294793,990,3963
+c_glm,4,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10417306094434116,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.10209965842059479,990,3963
+c_glm,4,lin,LIN,Logistic Regression,Brier,0.10584044039242213,"{""model__C"": 0.1}",0.11011837693476423,990,3963
+c_glm,4,rf,RF,Random Forest Classifier,Brier,0.10648665733542773,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11500264017811869,990,3963
+c_glm,5,dt,DT,Decision Tree Classifier,Brier,0.1300423712459719,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",0.10497964778162756,990,3963
+c_glm,5,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10953267141683223,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.09657290775996573,990,3963
+c_glm,5,lin,LIN,Logistic Regression,Brier,0.10979461867117334,"{""model__C"": 1.0}",0.0942451527042878,990,3963
+c_glm,5,rf,RF,Random Forest Classifier,Brier,0.11949172083187946,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.10683658654991417,990,3963
+c_glm,6,dt,DT,Decision Tree Classifier,Brier,0.11901768607919193,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11946804826901324,990,3963
+c_glm,6,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.11024046554199936,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.11347797133451906,990,3963
+c_glm,6,lin,LIN,Logistic Regression,Brier,0.11165903804054869,"{""model__C"": 0.1}",0.10939612071883148,990,3963
+c_glm,6,rf,RF,Random Forest Classifier,Brier,0.1142057590705533,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.10910567487638165,990,3963
+c_glm,7,dt,DT,Decision Tree Classifier,Brier,0.116455313007374,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11144166239571235,990,3963
+c_glm,7,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10686066451692341,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.10667612734221746,990,3963
+c_glm,7,lin,LIN,Logistic Regression,Brier,0.10636138914231587,"{""model__C"": 1.0}",0.10985732585791216,990,3963
+c_glm,7,rf,RF,Random Forest Classifier,Brier,0.11571994287967152,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.12988051561273342,990,3963
+c_glm,8,dt,DT,Decision Tree Classifier,Brier,0.12021527160325071,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.10186623718101155,990,3963
+c_glm,8,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10600281692222402,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.09900015950933257,990,3963
+c_glm,8,lin,LIN,Logistic Regression,Brier,0.10707265989838591,"{""model__C"": 0.1}",0.09863700941568718,990,3963
+c_glm,8,rf,RF,Random Forest Classifier,Brier,0.1201855363736931,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.09960725157781057,990,3963
+c_glm,9,dt,DT,Decision Tree Classifier,Brier,0.1253614438300955,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",0.11283164291249394,990,3963
+c_glm,9,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10672786253975453,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.1071709313329095,990,3963
+c_glm,9,lin,LIN,Logistic Regression,Brier,0.1075687061814668,"{""model__C"": 1.0}",0.10723372058980167,990,3963
+c_glm,9,rf,RF,Random Forest Classifier,Brier,0.1159597360017662,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11741885613160327,990,3963
+c_glm,10,dt,DT,Decision Tree Classifier,Brier,0.1207068018205152,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11156925305185335,990,3963
+c_glm,10,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10858438878706342,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.09674806611219604,990,3963
+c_glm,10,lin,LIN,Logistic Regression,Brier,0.1049545944418836,"{""model__C"": 1.0}",0.09607192884624778,990,3963
+c_glm,10,rf,RF,Random Forest Classifier,Brier,0.1167430130987823,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.12806035718728498,990,3963
+c_glm,11,dt,DT,Decision Tree Classifier,Brier,0.11224767938440308,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11822983547413737,990,3963
+c_glm,11,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.1050373185120452,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.11519693770277585,990,3963
+c_glm,11,lin,LIN,Logistic Regression,Brier,0.1050551090044531,"{""model__C"": 0.1}",0.12144260959937989,990,3963
+c_glm,11,rf,RF,Random Forest Classifier,Brier,0.10655113932316969,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.1185683743128603,990,3963
+c_glm,12,dt,DT,Decision Tree Classifier,Brier,0.11845522240753728,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",0.11866576660654858,990,3963
+c_glm,12,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.1060708530296727,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.11170436663604975,990,3963
+c_glm,12,lin,LIN,Logistic Regression,Brier,0.10822357029643835,"{""model__C"": 1.0}",0.1164918835865415,990,3963
+c_glm,12,rf,RF,Random Forest Classifier,Brier,0.11243653076995998,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11069875595109431,990,3963
+c_glm,13,dt,DT,Decision Tree Classifier,Brier,0.11276977034271435,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11775365215340186,990,3963
+c_glm,13,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.09682120674563022,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.1154724538741832,990,3963
+c_glm,13,lin,LIN,Logistic Regression,Brier,0.10310985556119083,"{""model__C"": 0.1}",0.1139250632329352,990,3963
+c_glm,13,rf,RF,Random Forest Classifier,Brier,0.11432792211991433,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.12380041699717532,990,3963
+c_glm,14,dt,DT,Decision Tree Classifier,Brier,0.11976612344717182,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 10}",0.11547728224839662,990,3963
+c_glm,14,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10688405602512982,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.08948632447868345,990,3963
+c_glm,14,lin,LIN,Logistic Regression,Brier,0.11300818203871686,"{""model__C"": 0.1}",0.09100467700388977,990,3963
+c_glm,14,rf,RF,Random Forest Classifier,Brier,0.11900329844217698,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.1074056247323245,990,3963
+c_glm,15,dt,DT,Decision Tree Classifier,Brier,0.11103639325719336,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11046417062031139,990,3963
+c_glm,15,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10013895965730453,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.09848592525500979,990,3963
+c_glm,15,lin,LIN,Logistic Regression,Brier,0.10363894208445161,"{""model__C"": 1.0}",0.09149655796621482,990,3963
+c_glm,15,rf,RF,Random Forest Classifier,Brier,0.10958263709134468,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11250232897573186,990,3963
+c_glm,16,dt,DT,Decision Tree Classifier,Brier,0.11608919470280306,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.11579837686811002,990,3963
+c_glm,16,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10803921601452425,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.09575943873366186,990,3963
+c_glm,16,lin,LIN,Logistic Regression,Brier,0.10565791917734309,"{""model__C"": 0.1}",0.10641176557256943,990,3963
+c_glm,16,rf,RF,Random Forest Classifier,Brier,0.11786668381173115,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.11801970620326534,990,3963
+c_glm,17,dt,DT,Decision Tree Classifier,Brier,0.11812526884347146,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.12187627917727373,990,3963
+c_glm,17,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.1076427989989123,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.10988049033606404,990,3963
+c_glm,17,lin,LIN,Logistic Regression,Brier,0.10969417414103674,"{""model__C"": 1.0}",0.10656687398190101,990,3963
+c_glm,17,rf,RF,Random Forest Classifier,Brier,0.11509617518285158,"{""model__max_depth"": 12, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.12604298559884472,990,3963
+c_glm,18,dt,DT,Decision Tree Classifier,Brier,0.1163064772609525,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.1245065427696776,990,3963
+c_glm,18,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.108272495603197,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.1036926131710364,990,3963
+c_glm,18,lin,LIN,Logistic Regression,Brier,0.10922067680170702,"{""model__C"": 0.1}",0.11226286655901213,990,3963
+c_glm,18,rf,RF,Random Forest Classifier,Brier,0.11159978903077707,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.1320747645464055,990,3963
+c_glm,19,dt,DT,Decision Tree Classifier,Brier,0.11741668265720408,"{""model__max_depth"": 4, ""model__min_samples_leaf"": 10}",0.10290506698800744,990,3963
+c_glm,19,gb,GB,Histogram Gradient Boosting Classifier,Brier,0.10400127509613938,"{""model__learning_rate"": 0.1, ""model__max_iter"": 50, ""model__max_leaf_nodes"": 15}",0.10468913633898029,990,3963
+c_glm,19,lin,LIN,Logistic Regression,Brier,0.10536892903473422,"{""model__C"": 1.0}",0.10076320030315339,990,3963
+c_glm,19,rf,RF,Random Forest Classifier,Brier,0.10983759942940274,"{""model__max_depth"": 8, ""model__min_samples_leaf"": 20, ""model__n_estimators"": 20}",0.10409134780189765,990,3963

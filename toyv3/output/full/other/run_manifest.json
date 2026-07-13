@@ -1,15 +1,33 @@
 {
   "project": "toyv3",
   "mode": "full",
-  "timestamp_utc": "2026-07-11T02:06:52.766019+00:00",
+  "timestamp_utc": "2026-07-13T07:21:15.480128+00:00",
   "python_version": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
   "platform": "Windows-10-10.0.26200-SP0",
   "package_versions": {
     "numpy": "2.4.4",
-    "pandas": "3.0.3",
+    "pandas": "2.3.3",
     "scipy": "1.17.1",
-    "matplotlib": "3.10.9"
+    "matplotlib": "3.10.9",
+    "pyarrow": "24.0.0",
+    "ppi-python": "0.2.3",
+    "scikit-learn": "1.8.0"
   },
+  "source_hashes": {
+    "audit_checks.py": "cd4dfbb46759fef65511bf366d808589842e454c51dbb01e0308c063f36b85e7",
+    "baselines.py": "f8dca20fe1139398d9672cd83baa3eeb1d1735ed0a727d540013518d3a7036af",
+    "checks.py": "aa797fac9f101757b7abcd66b90c6040017d6ba3452488972ae84531b17f8530",
+    "config.py": "6ba1d273ea3d634ac74cce34522e456d87911b91dbd8ade8fc7b866127a8e7bb",
+    "cross_ppi.py": "7ee3386a9d0a865a7dc480059d1137a3474742b6aead5f806a018ae966c0449f",
+    "data_generation.py": "eedee3b3f8a4147a176b85062038e7f24405fff4e9be780676aa10b7641d2cfb",
+    "formulation.py": "640b6b7dac8fdf5f945dde272a1423ee203ee49387807942830542bdde0c5607",
+    "learner_proxy.py": "9630268e976d6a2c1e28289c49e0cf7e92a74f483f0153dfca11b0d0b8b34d25",
+    "main.py": "7ad61fb1a8600696e5b4d185f22ec924064652f1d7c245a40cb52733b86d25ab",
+    "plotting.py": "a2877a656cfae97e798469adf65dcf5ece9225aa2c263e84c9e2ba164acee257",
+    "ppi.py": "3ac3572e8bc16629c6eddef1931573725b84468c774e28ba2c21443bec9a2410",
+    "ppiplusplus.py": "7fadc44ff2eb1d0bbf2a9bef06a5ed82c4f2e7320f0c1162b49ca9ad77fe4d7c"
+  },
+  "aggregate_source_hash": "85660a2ab8ded2044ffe6029f73e0b46c73abe8f5947a3623149da630ec73f1b",
   "run_config": {
     "n_replicates": 2000,
     "seeds": [
@@ -46,7 +64,8 @@
     ],
     "save_input_data": "seed0_only",
     "save_replicate_results": "seed0_only",
-    "progress_every": 100
+    "progress_every": 100,
+    "workers": 14
   },
   "config": {
     "PROJECT_NAME": "toyv3",
@@ -92,6 +111,7 @@
       0.975
     ],
     "PPI_PLUS_PLUS_V1_COVARIANCE_CONFIDENCE_LEVEL": 0.95,
+    "PPI_PY_EXPECTED_VERSION": "0.2.3",
     "PPI_PLUS_PLUS_V2_LAMBDA_MODE": "min_sandwich_trace",
     "PPI_PLUS_PLUS_V2_FIXED_LAMBDA": null,
     "PPI_PLUS_PLUS_V2_LAMBDA_GRID": [

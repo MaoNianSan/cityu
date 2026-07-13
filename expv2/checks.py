@@ -54,3 +54,23 @@ def check_learner_ids(ids):
     unknown = set(ids) - set(LEARNER_IDS)
     if unknown:
         raise ValueError(f"Unknown learner identifiers: {sorted(unknown)}")
+
+
+def validate_loaded_data(experiment, y, X_target, X_learner, binary):
+    """Fail fast on silent outcome-conversion and target-design failures."""
+    arr = np.asarray(y)
+    if arr.ndim != 1 or len(arr) < 2:
+        raise ValueError(f"{experiment}: outcome must be a non-empty one-dimensional array.")
+    if np.any(~np.isfinite(arr.astype(float))):
+        raise ValueError(f"{experiment}: outcome contains NaN or infinity.")
+    if binary:
+        values = np.unique(arr.astype(int))
+        if not np.array_equal(values, np.array([0, 1])):
+            raise ValueError(
+                f"{experiment}: binary outcome must contain both 0 and 1; found {values.tolist()}."
+            )
+    target = np.asarray(X_target, dtype=float)
+    if target.shape[0] != len(arr) or np.any(~np.isfinite(target)):
+        raise ValueError(f"{experiment}: invalid target-design matrix.")
+    if len(X_learner) != len(arr):
+        raise ValueError(f"{experiment}: learner features and outcome have different lengths.")

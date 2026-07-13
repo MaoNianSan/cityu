@@ -211,6 +211,8 @@ For mean estimation, $\widehat H^{-1}=I$. In this case, the score contributions 
 
 For linear regression and logistic GLM, the same formula is applied to the corresponding score or gradient contributions.
 
+`ppi-python==0.2.3` does not return the selected power-tuning parameter. Moreover, for OLS and logistic regression its public `ci(..., lam=None)` path performs a second plug-in update after the package point-estimate path. Therefore, toyv3 reproduces that CI-selection path once, records the final scalar as `lambda_hat`, and then supplies the same value explicitly to the point estimate and every configured CI call. This guarantees that the stored estimate is the midpoint of every two-sided interval and that all reported intervals correspond to one fitted estimator.
+
 The package returns marginal confidence intervals rather than a full covariance matrix. To keep the same result interface as the other methods, toyv3 reconstructs a diagonal covariance matrix from the returned marginal intervals. If the package returns the interval $[L_k,U_k]$ for coefficient $k$ at confidence level $c$, then
 
 $$
@@ -241,7 +243,7 @@ $$
 \right).
 $$
 
-This diagonal covariance is only an interface reconstruction and is not used for formal CI width or coverage. The 90%, 95%, and 97.5% intervals are requested directly using two-sided alpha 0.10, 0.05, and 0.025 respectively.
+This diagonal covariance is only an interface reconstruction and is not used for formal CI width or coverage. The 90%, 95%, and 97.5% intervals are requested directly using two-sided alpha 0.10, 0.05, and 0.025 respectively, all with the same recorded `lambda_hat`.
 
 ### 2.3 PPI++V2
 
@@ -341,6 +343,7 @@ cross_ppi.py           # Cross-PPI
 plotting.py            # 
 main.py                # Simulation orchestration and output writing
 checks.py              # Mathematical and numerical preflight checks
+audit_checks.py        # A--H leakage and estimator-invariant audit
 ipy/result_audit.ipynb # Read-only audit of fast/full outputs
 tests/test_core.py      # Lightweight regression tests for core numerical guards
 ```
@@ -359,11 +362,12 @@ pip install -r requirements.txt
 ```bash
 python main.py --mode fast
 python main.py --mode full
+python main.py --mode fast --workers 4
 
 # Set WORKERS in config.py to control the number of replicate processes.
 ```
 
-All numerical values and the CPU allocation (`WORKERS`) are controlled in `config.py`.
+All numerical values and the default CPU allocation (`WORKERS`) are controlled in `config.py`. The optional `--workers` argument overrides only the worker count for the current run.
 `WORKERS=1` is serial execution. Because each replicate has its own deterministic
 random-number streams, changing `WORKERS` changes runtime but not the generated
 data, point estimates, intervals, or aggregate tables.
@@ -405,9 +409,10 @@ $$
 - `full/table/all_seed_metrics.csv`: aggregate metrics for seeds 0--29;
 - `full/table/robustness_summary.csv`: seed-0 values plus seed 1--29 median, IQR, min, and max;
 - `other/replicate_results_seed0.parquet`: seed-0 interval-level audit records;
-- `other/diagnostics_seed0.parquet`: convergence, Hessian condition number, and PPI++V1/PPI++V2 diagnostics.
+- `other/diagnostics_seed0.parquet`: convergence, Hessian condition number, and PPI++V1/PPI++V2 diagnostics;
+- `other/prediction_diagnostics_seed0.parquet`: P1--P4 prediction fingerprints, hashes, MSE, bias, standard deviation, and labelled prediction--outcome correlation.
 
-If `pyarrow` is unavailable, the two detailed audit files are written as compressed `.csv.gz` files instead; aggregate result tables are always CSV.
+If `pyarrow` is unavailable, the detailed audit files are written as compressed `.csv.gz` files instead; aggregate result tables are always CSV. Before a new run, the selected mode's generated tables, figures, detail files, manifest, and generated input cache are cleared so a stale parquet file cannot coexist with a newer CSV fallback.
 
 ### Result display and interpretation
 
@@ -438,8 +443,17 @@ The grey reference regions/bars are 95% binomial Monte-Carlo ranges under exact 
 - logistic pseudo outcomes remain in `[0,1]`;
 - `lambda=0` exactly recovers Classic;
 - `lambda=1` exactly recovers PPI;
+- PPI++V1 exposes one selected lambda and its point estimate equals every direct CI midpoint;
 - boundary coverage is stable when an analytically exact interval has only floating-point-scale width.
+
+For the extended information-flow audit, run:
+
+```bash
+python audit_checks.py
+```
+
+This executes Tests A--H without launching the full Monte Carlo experiment and writes `audit/invariant_test_results.csv`.
 
 ## 8. Notebook scope
 
-`ipy/result_audit.ipynb` only reads existing `output/fast/` and `output/full/` files. It does not generate data, refit estimators, or overwrite formal output.
+`ipy/result_audit.ipynb` only reads existing `output/fast/` and `output/full/` files. It does not generate data, refit estimators, or overwrite formal output. Its default `PREFERRED_MODE="auto"` selects the most recent complete run from `run_manifest.json`; set it to `"fast"` or `"full"` to force a specific mode.

@@ -49,7 +49,11 @@ class TestCoreIntegrity(unittest.TestCase):
             result = fit_ppi_plus_plus_v1(scenario, data, proxy)
         np.testing.assert_allclose(alphas, [0.10, 0.05, 0.025])
         self.assertEqual(set(result.intervals), {0.90, 0.95, 0.975})
-        self.assertEqual(result.diagnostics["interval_source"], "ppi_python_direct")
+        self.assertEqual(
+            result.diagnostics["interval_source"],
+            "ppi_python_fixed_selected_lambda",
+        )
+        self.assertIsNotNone(result.diagnostics["lambda_hat"])
 
 
 if __name__ == "__main__":

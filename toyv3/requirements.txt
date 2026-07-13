@@ -4,4 +4,4 @@ scipy>=1.10
 matplotlib>=3.7
 pyarrow>=14.0
 jupyter>=1.0
-ppi-python>=0.2.3
+ppi-python==0.2.3

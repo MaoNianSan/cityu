@@ -1,13 +1,13 @@
-2026-07-11 10:05:41,138 | INFO | Running preflight checks.
-2026-07-11 10:05:41,149 | INFO | Preflight checks passed.
-2026-07-11 10:05:41,149 | INFO | Starting mode=fast seed=0.
-2026-07-11 10:06:14,645 | INFO | mode=fast seed=0 completed=25/200
-2026-07-11 10:06:16,759 | INFO | mode=fast seed=0 completed=50/200
-2026-07-11 10:06:18,446 | INFO | mode=fast seed=0 completed=75/200
-2026-07-11 10:06:22,304 | INFO | mode=fast seed=0 completed=100/200
-2026-07-11 10:06:24,782 | INFO | mode=fast seed=0 completed=125/200
-2026-07-11 10:06:27,017 | INFO | mode=fast seed=0 completed=150/200
-2026-07-11 10:06:29,126 | INFO | mode=fast seed=0 completed=175/200
-2026-07-11 10:06:30,884 | INFO | mode=fast seed=0 completed=200/200
-2026-07-11 10:06:49,115 | INFO | Figures written to D:\research\PPI\code\20260706\toyv3\output\fast\figure.
-2026-07-11 10:06:49,115 | INFO | Completed mode=fast.
+2026-07-13 15:16:14,420 | INFO | Running preflight checks.
+2026-07-13 15:16:26,330 | INFO | Preflight checks passed.
+2026-07-13 15:16:26,330 | INFO | Starting mode=fast seed=0.
+2026-07-13 15:16:52,901 | INFO | mode=fast seed=0 completed=25/200
+2026-07-13 15:16:54,340 | INFO | mode=fast seed=0 completed=50/200
+2026-07-13 15:16:55,754 | INFO | mode=fast seed=0 completed=75/200
+2026-07-13 15:16:57,195 | INFO | mode=fast seed=0 completed=100/200
+2026-07-13 15:16:58,289 | INFO | mode=fast seed=0 completed=125/200
+2026-07-13 15:16:59,741 | INFO | mode=fast seed=0 completed=150/200
+2026-07-13 15:17:01,131 | INFO | mode=fast seed=0 completed=175/200
+2026-07-13 15:17:02,361 | INFO | mode=fast seed=0 completed=200/200
+2026-07-13 15:17:17,479 | INFO | Figures written to D:\research\PPI\code\20260706\toyv3\output\fast\figure.
+2026-07-13 15:17:17,479 | INFO | Completed mode=fast.

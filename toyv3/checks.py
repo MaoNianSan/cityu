@@ -11,6 +11,7 @@ from data_generation import generate_replicate
 from formulation import all_scenarios, get_scenario
 from learner_proxy import generate_proxy
 from ppi import fit_ppi, fit_weighted_ppi
+from ppiplusplus import fit_ppi_plus_plus_v1
 
 
 def _assert_close(
@@ -98,13 +99,15 @@ def run_preflight_checks() -> None:
             eta_u = scenario.linear_predictor(data.x_unlabeled)
             _assert_close(p1.error_labeled, p1.f_labeled - scenario.conditional_mean(data.x_labeled), "logistic P1 error definition")
             _assert_close(p4.error_labeled, p4.f_labeled - scenario.conditional_mean(data.x_labeled), "logistic P4 error definition")
-            _assert_close(logit(p4.f_labeled) - eta_l, 10.0 * (logit(p1.f_labeled) - eta_l), "logistic labelled latent ratio", atol=1e-10)
-            _assert_close(logit(p4.f_unlabeled) - eta_u, 10.0 * (logit(p1.f_unlabeled) - eta_u), "logistic unlabelled latent ratio", atol=1e-10)
+            ratio = float(config.P4 / config.P1)
+            _assert_close(logit(p4.f_labeled) - eta_l, ratio * (logit(p1.f_labeled) - eta_l), "logistic labelled latent ratio", atol=1e-10)
+            _assert_close(logit(p4.f_unlabeled) - eta_u, ratio * (logit(p1.f_unlabeled) - eta_u), "logistic unlabelled latent ratio", atol=1e-10)
         else:
             _assert_close(p1.error_labeled, config.P1 * data.z_proxy_labeled, "Gaussian P1 labelled normal error", atol=1e-12)
             _assert_close(p4.error_labeled, config.P4 * data.z_proxy_labeled, "Gaussian P4 labelled normal error", atol=1e-12)
-            _assert_close(p4.error_labeled, 10.0 * p1.error_labeled, "Gaussian labelled 10x ratio", atol=1e-12)
-            _assert_close(p4.error_unlabeled, 10.0 * p1.error_unlabeled, "Gaussian unlabelled 10x ratio", atol=1e-12)
+            ratio = float(config.P4 / config.P1)
+            _assert_close(p4.error_labeled, ratio * p1.error_labeled, "Gaussian labelled scale ratio", atol=1e-12)
+            _assert_close(p4.error_unlabeled, ratio * p1.error_unlabeled, "Gaussian unlabelled scale ratio", atol=1e-12)
 
         # Endpoint identities for the PPI++ family.
         classic = fit_classic(scenario, data)
@@ -136,6 +139,25 @@ def run_preflight_checks() -> None:
             lambda_one.covariance,
             f"lambda=1 equals PPI covariance for {scenario.name}",
         )
+
+        # PPI++V1 must use one coherent lambda for its point estimate and all
+        # direct package intervals.
+        v1 = fit_ppi_plus_plus_v1(scenario, data, p1)
+        if not v1.converged:
+            raise AssertionError(
+                f"PPI++V1 preflight failed for {scenario.name}: "
+                f"{v1.diagnostics.get('exception')}"
+            )
+        if v1.diagnostics.get("lambda_hat") is None:
+            raise AssertionError("PPI++V1 did not expose its selected lambda.")
+        for confidence_level in config.CONFIDENCE_LEVELS:
+            lower, upper = v1.intervals[round(float(confidence_level), 6)]
+            _assert_close(
+                0.5 * (lower + upper),
+                v1.estimate,
+                f"PPI++V1 estimate equals CI midpoint for {scenario.name}/{confidence_level}",
+                atol=1e-8,
+            )
 
     # Explicitly check the mean target under the stated DGP.
     mean_spec = get_scenario("mean")

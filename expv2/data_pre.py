@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from config import DATASET_CONFIG
-from checks import require_columns, check_galaxy_no_leakage
+from checks import require_columns, check_galaxy_no_leakage, validate_loaded_data
 
 
 def _add_intercept(frame: pd.DataFrame, columns: list[str]) -> tuple[np.ndarray, list[str]]:
@@ -49,6 +49,7 @@ def load_experiment(experiment: str) -> dict:
         X_target, parameter_names = _add_intercept(df, cfg["target_features"])
 
     X_learner = df[cfg["learner_features"]].copy()
+    validate_loaded_data(experiment, y, X_target, X_learner, bool(cfg["binary"]))
     return {
         "experiment": experiment,
         "task": cfg["task"],

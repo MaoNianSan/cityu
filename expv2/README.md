@@ -319,7 +319,7 @@ $$
 
 ### 4.4 PPI++V1: `ppi-python==0.2.3`
 
-PPI++V1 is a strict wrapper around `ppi-python==0.2.3`. The wrapper passes `lam=None`, so the package estimates a power-tuning parameter internally.
+PPI++V1 is a strict wrapper around `ppi-python==0.2.3`. The wrapper reproduces the package's first power-tuning update once, records the resulting scalar $\widehat\lambda_{\mathrm{V1}}$, and then passes that same fixed value explicitly to both the package point-estimate and confidence-interval functions. This prevents the OLS and logistic CI paths from recomputing a second lambda after the point estimate.
 
 For a fixed scalar $\lambda$, the package mean estimator has the form
 
@@ -402,7 +402,7 @@ $$
 
 followed by clipping to $[0,1]$.
 
-The wrapper does not receive the selected value from the package, so `selected_lambda` is stored as missing and `lambda_source` is recorded as `package_internal_not_exposed`.
+The resolved value is stored in `selected_lambda`, and `lambda_source` is recorded as `package_formula_resolved_once`. The wrapper also verifies numerically that the fixed-lambda package point estimate equals the midpoint of the returned 95% interval.
 
 Important: V1 is not merely another search procedure for the project-specific V2 estimator. For mean estimation, the fixed-$\lambda$ point-estimator forms coincide. For OLS and logistic regression, V1 follows the package formulations above, while V2 follows the internal estimating equations in Section 4.5.
 
@@ -599,6 +599,18 @@ $$
 
 `main.py` then reconstructs the 90%, 95%, and 97.5% intervals from that standard error. Therefore, the result files do not contain three independent package calls at three confidence levels. This statement describes the current implementation and prevents the README from overstating what the wrapper does.
 
+## 4.8 Inferential-target warning: fixed empirical population versus superpopulation variance
+
+The code uses the complete cleaned dataset to define an empirical truth, then repeatedly partitions that same finite dataset without replacement into labelled and unlabelled subsets. The implemented Classic, PPI, PPI++V1, PPI++V2, and Cross-PPI covariance formulas are the corresponding independent-sample or superpopulation formulas; they do not apply a finite-population correction or the labelled--unlabelled covariance induced by the complementary partition.
+
+Consequently, coverage should not be interpreted as a formally calibrated fixed-finite-population result until the paper chooses one coherent target:
+
+1. fixed-population inference with an appropriate finite-population covariance;
+2. superpopulation inference using independently sampled study sets and a separate reference sample for truth; or
+3. a substantially smaller sampling fraction for an explicit superpopulation approximation.
+
+The audit patch does not alter these formulas because that change would redefine the inferential experiment rather than repair an isolated implementation defect.
+
 ## 5. Running
 
 ```bash
@@ -606,14 +618,15 @@ python -m pip install -r requirements.txt
 python -m compileall -q .
 python main.py --mode fast --experiment a_mean
 python main.py --mode fast
-python main.py --mode full
+python main.py --mode fast --workers 4
+python main.py --mode full --workers 4
 
 # Regenerate figures from existing tables without rerunning inference
 python replot.py --mode fast --experiment a_mean
 python replot.py --mode fast
 ```
 
-`fast=20` and `full=100`. Seeds, grids, features, sample proportions, and requested confidence levels are controlled by `config.py`. The fixed 95% package call used by the current PPI++V1 and Cross-PPI wrappers is defined in `ppiplusv1.py` and `crossppi.py`, not in `config.py`.
+`fast=20` and `full=100`. Seeds, grids, features, sample proportions, and requested confidence levels are controlled by `config.py`. `--workers` overrides `WORKER` for the current run. The fixed 95% package call used by the current PPI++V1 and Cross-PPI wrappers is defined in `ppiplusv1.py` and `crossppi.py`, not in `config.py`.
 
 ## 6. Outputs
 
@@ -693,12 +706,12 @@ Naive ML remains in the result CSV files as an uncorrected prediction-only valid
 
 ## 7. Notebook scope
 
-`ipy/result_audit.ipynb` is read-only. It prefers full outputs, falls back to fast outputs, reads configuration and generated files, and never fits learners, recomputes intervals, or writes formal output.
+`ipy/result_audit.ipynb` is read-only. It selects the most recent complete output using the stored UTC run timestamps, with file modification time as a fallback for legacy outputs. It never fits learners, recomputes intervals, or writes formal output.
 
 ## 8. Implementation notes
 
 1. Main Classic uses all labelled observations. The $\lambda=0$ V2 boundary uses only `PPI_inf`; these are deliberately distinguished.
 2. Internal PPI, package PPI++V1, and package Cross-PPI must not be treated as one interchangeable finite-sample implementation, especially for OLS.
-3. PPI++V1 and Cross-PPI selected or fold-specific learner details are retained through package outputs and diagnostics, but the V1 selected $\lambda$ is not exposed by the current wrapper.
+3. PPI++V1 now records the single resolved $\lambda$ used by both its point estimate and confidence interval. Cross-PPI fold-specific learner details remain in diagnostics.
 4. Ordinary-PPI quality in `learner_quality.csv` and Cross-PPI OOF quality in `diagnostics.csv` refer to different prediction sets and should not be conflated.
 5. All formulas in this README describe the current code rather than an abstract method with different sample splitting or different package calls.

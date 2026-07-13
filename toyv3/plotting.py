@@ -172,6 +172,19 @@ def _calibration_legend_handles() -> list[Line2D]:
 def _build_seed_level_metrics(frame: pd.DataFrame) -> pd.DataFrame:
     """Add width relative to the matched Classic result within each seed."""
     enriched = frame.copy()
+    if "n_failed_replicates" in enriched.columns:
+        failures = pd.to_numeric(
+            enriched["n_failed_replicates"], errors="coerce"
+        ).fillna(0)
+        if (failures > 0).any():
+            failed_rows = enriched.loc[
+                failures > 0,
+                ["seed", "scenario", "target", "profile", "method", "n_failed_replicates"],
+            ]
+            raise ValueError(
+                "Plotting refuses metrics with failed replications. Inspect the "
+                f"diagnostic table first. Example failures: {failed_rows.head(5).to_dict('records')}"
+            )
     classic = (
         enriched[enriched["method"] == "classic"]
         [["seed", "scenario", "target", "confidence_level", "average_ci_width"]]
@@ -203,7 +216,14 @@ def _summarise_for_plot(frame: pd.DataFrame) -> pd.DataFrame:
     figures. In fast mode, all quantiles collapse to the single seed value.
     """
     enriched = _build_seed_level_metrics(frame)
-    key_columns = ["scenario", "target", "profile", "method", "confidence_level"]
+    key_columns = [
+        "scenario",
+        "target",
+        "profile",
+        "scenario_signature",
+        "method",
+        "confidence_level",
+    ]
 
     q025 = lambda x: x.quantile(0.025)
     q25 = lambda x: x.quantile(0.25)
@@ -233,6 +253,15 @@ def _summarise_for_plot(frame: pd.DataFrame) -> pd.DataFrame:
 
             n_seeds=("seed", "nunique"),
             n_replicates=("n_replicates", "first"),
+            n_successful_replicates=(
+                "n_successful_replicates",
+                "first",
+            )
+            if "n_successful_replicates" in enriched.columns
+            else ("n_replicates", "first"),
+            n_failed_replicates=("n_failed_replicates", "first")
+            if "n_failed_replicates" in enriched.columns
+            else ("n_replicates", lambda x: 0),
         )
         .sort_values(key_columns)
         .reset_index(drop=True)

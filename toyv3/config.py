@@ -35,6 +35,7 @@ P4 = 0.20  # standard-normal proxy-error scale; shares P1's realization
 
 CONFIDENCE_LEVELS = (0.90, 0.95, 0.975)
 PPI_PLUS_PLUS_V1_COVARIANCE_CONFIDENCE_LEVEL = 0.95
+PPI_PY_EXPECTED_VERSION = "0.2.3"
 PPI_PLUS_PLUS_V2_LAMBDA_MODE = "min_sandwich_trace"
 PPI_PLUS_PLUS_V2_FIXED_LAMBDA = None  # will find lambda automatically if None
 PPI_PLUS_PLUS_V2_LAMBDA_GRID = tuple(round(i * 0.025, 3) for i in range(41))

@@ -7,6 +7,8 @@ import os
 import shutil
 import time
 import traceback
+from datetime import datetime, timezone
+from uuid import uuid4
 
 os.environ.setdefault("MPLBACKEND", "Agg")
 
@@ -379,8 +381,11 @@ def _infer_from_artifacts(
     return rows, diagnostics, warnings, quality_row
 
 
-def run_experiment(mode, experiment):
+def run_experiment(mode, experiment, workers=None):
     start = time.time()
+    run_started_utc = datetime.now(timezone.utc).isoformat()
+    run_id = uuid4().hex
+    worker_count = max(1, int(WORKER if workers is None else workers))
     _, figdir, tabledir, otherdir = _prepare_dirs(mode, experiment)
     data = load_experiment(experiment)
     check_learner_ids(LEARNER_IDS)
@@ -412,7 +417,7 @@ def run_experiment(mode, experiment):
 
         # Parallel stage: model fitting and prediction only.
         artifacts_by_learner = {}
-        with ThreadPoolExecutor(max_workers=max(1, int(WORKER))) as pool:
+        with ThreadPoolExecutor(max_workers=worker_count) as pool:
             futures = {
                 pool.submit(
                     _prepare_learner_artifacts,
@@ -520,7 +525,10 @@ def run_experiment(mode, experiment):
     config_snapshot = {
         "mode": mode,
         "replicates": B,
-        "worker": WORKER,
+        "worker": worker_count,
+        "run_id": run_id,
+        "run_started_utc": run_started_utc,
+        "run_finished_utc": datetime.now(timezone.utc).isoformat(),
         "parallel_stage": "learner fitting and prediction only",
         "inference_stage": "serial",
         "random_seed": RANDOM_SEED,
@@ -536,11 +544,18 @@ def run_experiment(mode, experiment):
         "source_path": data["source_path"],
         "n_total": len(y),
         "truth": truth.tolist(),
+        "failed_result_rows": int((rep.status != "ok").sum()),
     }
     (otherdir / "config_used.json").write_text(json.dumps(config_snapshot, indent=2, default=str), encoding="utf-8")
     (otherdir / "run_log.txt").write_text(
         "\n".join(log) + f"\nfinished elapsed={time.time() - start:.1f}s\n", encoding="utf-8"
     )
+    failed_rows = int((rep.status != "ok").sum())
+    if STRICT_COMPLETE_RESULTS and failed_rows:
+        raise RuntimeError(
+            f"{experiment} produced {failed_rows} failed result rows. "
+            "Tables and warnings were saved, but formal plots were not generated."
+        )
     plot_learner_quality(quality_df, figdir, experiment, B)
     plot_inference_performance_95(main_display, quality_df, figdir, experiment, B)
     plot_coverage_calibration_by_parameter(summary_display, figdir, experiment, data["display_parameters"], B)
@@ -551,10 +566,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=MODES, required=True)
     parser.add_argument("--experiment", choices=EXPERIMENTS)
+    parser.add_argument("--workers", type=int, help="Override config.WORKER for this run.")
     args = parser.parse_args()
     experiments = (args.experiment,) if args.experiment else EXPERIMENTS
     for exp in experiments:
-        run_experiment(args.mode, exp)
+        run_experiment(args.mode, exp, workers=args.workers)
 
 
 if __name__ == "__main__":

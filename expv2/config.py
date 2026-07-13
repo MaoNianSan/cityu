@@ -19,6 +19,7 @@ PPI_PLUS_PLUS_LAMBDA_GRID = tuple(round(i * 0.025, 3) for i in range(41))
 # lambda solution PPI++V2
 PROBABILITY_EPS = 1e-6
 CLEAN_OUTPUT_BEFORE_RUN = True
+STRICT_COMPLETE_RESULTS = True  # do not generate formal plots from incomplete method/replicate results
 PPI_PY_REQUIRED_VERSION = "0.2.3"
 
 EXPERIMENT_LABELS = {

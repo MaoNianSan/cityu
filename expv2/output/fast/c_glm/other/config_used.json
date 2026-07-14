@@ -2,6 +2,9 @@
   "mode": "fast",
   "replicates": 20,
   "worker": 4,
+  "run_id": "f7539799479546b58c5c6fd880dac5cb",
+  "run_started_utc": "2026-07-13T13:52:02.435829+00:00",
+  "run_finished_utc": "2026-07-13T13:59:27.495642+00:00",
   "parallel_stage": "learner fitting and prediction only",
   "inference_stage": "serial",
   "random_seed": 20260709,
@@ -130,12 +133,13 @@
   },
   "ppi_python_required": "0.2.3",
   "ppi_python_installed": "0.2.3",
-  "source_path": "D:\\research\\PPI\\code\\20260706\\expv2\\input\\adult\\adult_reconstruction.csv",
+  "source_path": "D:\\research\\PPI\\code\\20260706\\cityu\\expv2\\input\\adult\\adult_reconstruction.csv",
   "n_total": 49531,
   "truth": [
     -8.529094454489279,
     0.04643723080169108,
     0.34753400054604255,
     0.0425714021444259
-  ]
+  ],
+  "failed_result_rows": 0
 }

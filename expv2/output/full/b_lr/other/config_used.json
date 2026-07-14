@@ -2,6 +2,9 @@
   "mode": "full",
   "replicates": 100,
   "worker": 4,
+  "run_id": "3662513af677492f9af4ebbb735749b8",
+  "run_started_utc": "2026-07-13T15:39:04.574260+00:00",
+  "run_finished_utc": "2026-07-13T16:36:48.626061+00:00",
   "parallel_stage": "learner fitting and prediction only",
   "inference_stage": "serial",
   "random_seed": 20260709,
@@ -130,11 +133,12 @@
   },
   "ppi_python_required": "0.2.3",
   "ppi_python_installed": "0.2.3",
-  "source_path": "D:\\research\\PPI\\code\\20260706\\expv2\\input\\acs_pums\\acs_pums_ca_2019_person.csv",
+  "source_path": "D:\\research\\PPI\\code\\20260706\\cityu\\expv2\\input\\acs_pums\\acs_pums_ca_2019_person.csv",
   "n_total": 318215,
   "truth": [
     13291.613243404692,
     547.9069413412143,
     24977.364721462392
-  ]
+  ],
+  "failed_result_rows": 0
 }

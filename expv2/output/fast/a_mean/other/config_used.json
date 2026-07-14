@@ -2,6 +2,9 @@
   "mode": "fast",
   "replicates": 20,
   "worker": 4,
+  "run_id": "a1bfadc7095044028249bae14f502750",
+  "run_started_utc": "2026-07-13T13:35:19.938403+00:00",
+  "run_finished_utc": "2026-07-13T13:40:13.045437+00:00",
   "parallel_stage": "learner fitting and prediction only",
   "inference_stage": "serial",
   "random_seed": 20260709,
@@ -130,9 +133,10 @@
   },
   "ppi_python_required": "0.2.3",
   "ppi_python_installed": "0.2.3",
-  "source_path": "D:\\research\\PPI\\code\\20260706\\expv2\\input\\galaxy_zoo_2\\gz2_hart16.csv",
+  "source_path": "D:\\research\\PPI\\code\\20260706\\cityu\\expv2\\input\\galaxy_zoo_2\\gz2_hart16.csv",
   "n_total": 239695,
   "truth": [
     0.22373850101170237
-  ]
+  ],
+  "failed_result_rows": 0
 }

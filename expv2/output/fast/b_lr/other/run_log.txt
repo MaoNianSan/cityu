@@ -1,22 +1,22 @@
 experiment=b_lr mode=fast replicates=20 n=318215 truth=[13291.613243404692, 547.9069413412143, 24977.364721462392]
-replicate=0 completed elapsed=46.5s
-replicate=1 completed elapsed=83.3s
-replicate=2 completed elapsed=119.3s
-replicate=3 completed elapsed=157.6s
-replicate=4 completed elapsed=192.7s
-replicate=5 completed elapsed=228.8s
-replicate=6 completed elapsed=264.0s
-replicate=7 completed elapsed=303.7s
-replicate=8 completed elapsed=341.7s
-replicate=9 completed elapsed=380.8s
-replicate=10 completed elapsed=421.8s
-replicate=11 completed elapsed=460.2s
-replicate=12 completed elapsed=495.6s
-replicate=13 completed elapsed=533.5s
-replicate=14 completed elapsed=569.3s
-replicate=15 completed elapsed=607.0s
-replicate=16 completed elapsed=643.5s
-replicate=17 completed elapsed=677.6s
-replicate=18 completed elapsed=713.2s
-replicate=19 completed elapsed=748.1s
-finished elapsed=748.4s
+replicate=0 completed elapsed=52.1s
+replicate=1 completed elapsed=93.2s
+replicate=2 completed elapsed=129.5s
+replicate=3 completed elapsed=168.5s
+replicate=4 completed elapsed=203.3s
+replicate=5 completed elapsed=241.7s
+replicate=6 completed elapsed=275.8s
+replicate=7 completed elapsed=309.3s
+replicate=8 completed elapsed=342.5s
+replicate=9 completed elapsed=377.0s
+replicate=10 completed elapsed=411.5s
+replicate=11 completed elapsed=443.2s
+replicate=12 completed elapsed=473.2s
+replicate=13 completed elapsed=508.1s
+replicate=14 completed elapsed=539.5s
+replicate=15 completed elapsed=572.3s
+replicate=16 completed elapsed=606.6s
+replicate=17 completed elapsed=640.2s
+replicate=18 completed elapsed=672.3s
+replicate=19 completed elapsed=703.9s
+finished elapsed=704.2s

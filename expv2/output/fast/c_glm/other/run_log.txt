@@ -1,22 +1,22 @@
 experiment=c_glm mode=fast replicates=20 n=49531 truth=[-8.529094454489279, 0.04643723080169108, 0.34753400054604255, 0.0425714021444259]
-replicate=0 completed elapsed=24.7s
-replicate=1 completed elapsed=44.6s
-replicate=2 completed elapsed=65.3s
-replicate=3 completed elapsed=85.1s
-replicate=4 completed elapsed=104.4s
-replicate=5 completed elapsed=124.6s
-replicate=6 completed elapsed=144.4s
-replicate=7 completed elapsed=165.2s
-replicate=8 completed elapsed=184.7s
-replicate=9 completed elapsed=204.6s
-replicate=10 completed elapsed=224.4s
-replicate=11 completed elapsed=245.6s
-replicate=12 completed elapsed=264.5s
-replicate=13 completed elapsed=284.9s
-replicate=14 completed elapsed=305.7s
-replicate=15 completed elapsed=325.4s
-replicate=16 completed elapsed=346.1s
-replicate=17 completed elapsed=366.3s
-replicate=18 completed elapsed=386.4s
-replicate=19 completed elapsed=407.3s
-finished elapsed=407.6s
+replicate=0 completed elapsed=23.2s
+replicate=1 completed elapsed=44.9s
+replicate=2 completed elapsed=66.0s
+replicate=3 completed elapsed=87.2s
+replicate=4 completed elapsed=108.5s
+replicate=5 completed elapsed=130.0s
+replicate=6 completed elapsed=151.6s
+replicate=7 completed elapsed=174.3s
+replicate=8 completed elapsed=197.5s
+replicate=9 completed elapsed=217.6s
+replicate=10 completed elapsed=237.5s
+replicate=11 completed elapsed=258.1s
+replicate=12 completed elapsed=278.0s
+replicate=13 completed elapsed=300.4s
+replicate=14 completed elapsed=322.5s
+replicate=15 completed elapsed=345.0s
+replicate=16 completed elapsed=371.1s
+replicate=17 completed elapsed=397.7s
+replicate=18 completed elapsed=420.7s
+replicate=19 completed elapsed=444.6s
+finished elapsed=445.1s
